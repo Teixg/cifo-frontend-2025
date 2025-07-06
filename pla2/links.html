@@ -1,67 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-      <h2>1. Funcionament de l'atribut <i>target</i></h2>
+  </head>
+  <body>
+    <h2>1. Funcionament de l'atribut <i>target</i></h2>
 
-      <p>
-    L'atribut <strong>target</strong> s'utilitza per indicar on s'obrirà l'enllaç quan un usuari fa clic.
-    Els valors més comuns són:
-  </p>
-  <ul>
-    <li><code>_self</code> (es el valor per defecte): obre l'enllaç a la mateixa pestanya.</li>
-    <li><code>_blank</code>: obre l'enllaç en una nova pestanya.</li>
-    <li><code>_parent</code>: obre l'enllaç al marc pare (si s'utilitzen frames).</li>
-    <li><code>_top</code>: obre l'enllaç a la finestra superior.</li>
-  </ul>
-  <p>Exemples:</p>
-  <ul>
-    <li><a href="https://www.google.org" target="_self">Obre Google a la mateixa pestanya</a></li>
-    <li><a href="https://www.google.org" target="_blank">Obre Google en una nova pestanya</a></li>
-  </ul>
+    <p>
+      L'atribut <strong>target</strong> s'utilitza per indicar on s'obrirà
+      l'enllaç quan un usuari fa clic. Els valors més comuns són:
+    </p>
+    <ul>
+      <li>
+        <code>_self</code> (es el valor per defecte): obre l'enllaç a la mateixa
+        pestanya.
+      </li>
+      <li><code>_blank</code>: obre l'enllaç en una nova pestanya.</li>
+      <li>
+        <code>_parent</code>: obre l'enllaç al marc pare (si s'utilitzen
+        frames).
+      </li>
+      <li><code>_top</code>: obre l'enllaç a la finestra superior.</li>
+    </ul>
+    <p>Exemples:</p>
+    <ul>
+      <li>
+        <a href="https://www.google.org" target="_self"
+          >Obre Google a la mateixa pestanya</a
+        >
+      </li>
+      <li>
+        <a href="https://www.google.org" target="_blank"
+          >Obre Google en una nova pestanya</a
+        >
+      </li>
+    </ul>
 
-  <hr>
+    <hr />
 
-  <h2>2. Diferència entre rutes absolutes i rutes relatives</h2>
-  <ul>
-    <li>
-      <strong>Ruta absoluta:</strong> especifica la ubicació completa del recurs, incloent el <i>protocol i el domini</i>.  
-      <br>Exemple:  
-      <a href="https://www.google.com">https://www.google.com</a>
-    </li>
-    <li>
-      <strong>Ruta relativa:</strong> fa referència a un recurs dins la mateixa estructura de carpetes del lloc web.  
-      <br>Exemples:  
-      <ul>
-        <li><a href="texts.html">texts.html</a> (al mateix directori)</li>
-        <li><a href="img/Sora.png">img/Sora.png</a> (a dins d'una subcarpeta)</li>
-        <li><a href="../pla1/Hello-world.html">../pla1/Hello-world.html</a> (al afegir <i>../</i> puja un nivell en l'estructura)</li>
-      </ul>
-    </li>
-  </ul>
+    <h2>2. Diferència entre rutes absolutes i rutes relatives</h2>
+    <ul>
+      <li>
+        <strong>Ruta absoluta:</strong> especifica la ubicació completa del
+        recurs, incloent el <i>protocol i el domini</i>. <br />Exemple:
+        <a href="https://www.google.com">https://www.google.com</a>
+      </li>
+      <li>
+        <strong>Ruta relativa:</strong> fa referència a un recurs dins la
+        mateixa estructura de carpetes del lloc web. <br />Exemples:
+        <ul>
+          <li><a href="texts.html">texts.html</a> (al mateix directori)</li>
+          <li>
+            <a href="img/Sora.png">img/Sora.png</a> (a dins d'una subcarpeta)
+          </li>
+          <li>
+            <a href="../pla1/Hello-world.html">../pla1/Hello-world.html</a> (al
+            afegir <i>../</i> puja un nivell en l'estructura)
+          </li>
+        </ul>
+      </li>
+    </ul>
 
-  <hr>
+    <hr />
 
-  <h2>3. Enllaçar amb una adreça de correu electrònic</h2>
-  <p>
-    Per crear un enllaç que permeti enviar un correu electrònic, s'utilitza l'esquema <strong>mailto:</strong>.
-  </p>
-  <p>Exemple:</p>
-  <p>
-    <a href="mailto:exemple@correu.com">Envia un correu a exemple@correu.com</a>
-  </p>
-  <p>
-    També es pot preomplir l'assumpte i el cos del missatge:
-  </p>
-  <p>
-    <a href="mailto:exemple@correu.com?subject=Consulta&body=Bon dia, Albert, t'envio aquest correu...">
-      Envia un correu amb assumpte i cos predefinits
-    </a>
-  </p>
-<p><a href="/pla2/index.html">Tornar al index</a></p>
-</body>
+    <h2>3. Enllaçar amb una adreça de correu electrònic</h2>
+    <p>
+      <strong><code>mailto:</code></strong> s'utlitza per enviar un correu
+      electronic directe a la adreça que hi haiguia continuació del
+      <i>mailto:</i> obrint directament el nostre gestor de mails predeterminat.
+    </p>
+    <p>Exemple:</p>
+    <p>
+      <a href="mailto:exemple@correu.com"
+        >Envia un correu a exemple@correu.com</a
+      >
+    </p>
+    <p>També es pot preomplir l'assumpte i el cos del missatge:</p>
+    <p>
+      <a
+        href="mailto:exemple@correu.com?subject=Consulta&body=Bon dia, Albert, t'envio aquest correu..."
+      >
+        Envia un correu amb assumpte i cos predefinits
+      </a>
+    </p>
+    <p><a href="/pla2/index.html">Tornar al index</a></p>
+  </body>
 </html>
