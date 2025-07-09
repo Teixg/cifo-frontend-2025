@@ -3,16 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Document</title>
   </head>
   <body>
     <h1>TAULES</h1>
+
+    <!-- Taula amb informació de debats -->
     <table>
       <caption>
         Taula del PLA2
       </caption>
       <thead>
         <tr>
+          <!-- Encapçalaments de columna -->
           <th scope="col">Debat</th>
           <th scope="col">Iniciat per</th>
           <th scope="col">Darrer Missatge</th>
@@ -20,6 +24,7 @@
         </tr>
       </thead>
       <tbody>
+        <!-- Fila de dades amb imatges i informació dels debats -->
         <tr>
           <th scope="row"><img src="/pla2/img/estrella.png" />Presentació 1</th>
           <td>Usuari 0</td>
@@ -54,18 +59,23 @@
     </table>
 
     <hr />
+
+    <!-- Reflexió sobre l'ús de taules per estructurar una web -->
     <p><b>
       És bona idea definir l'estructura general d'una pàgina web aprofitant
       l'estructura de dos dimensions que ens permet crear una taula?
     </b></p>
     <p>
-      No és bona idea sobretot perquè pot dificultar temes d'accessibilitat a l'hora de maquetar, i és possible que sigui difícil adaptar aquest format a
+      No és bona idea sobretot perquè pot dificultar temes d'accessibilitat a
+      l'hora de maquetar, i és possible que sigui difícil adaptar aquest format a
       diferents dispositius, ja que cal tenir en compte la verticalitat dels
       dispositius mòbils per exemple. I a fi de comptes sempre és més òptim
       emprar les etiquetes semàntiques d'HTML com ara
       <i>header, footer, main, etc</i>
     </p>
-<br>
+
+      <!-- Enllaç de retorn a l’índex -->
+    <br>
     <p><a href="/pla2/index.html">Tornar a l'índex</a></p>
   </body>
 </html>

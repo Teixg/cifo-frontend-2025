@@ -3,19 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta name="author" content="Teix Garcia" />
+
+    <title>Pla2-Enllaços</title>
   </head>
   <body>
     <h1>ENLLAÇOS</h1>
-    <h2>Funcionament de l'atribut <i>target</i></h2>
 
+    <!-- Explicació de l'atribut target -->
+    <h2>Funcionament de l'atribut <i>target</i></h2>
     <p>
       L'atribut <strong>target</strong> s'utilitza per indicar on s'obrirà
       l'enllaç quan un usuari fa clic. Els valors més comuns són:
     </p>
     <ul>
       <li>
-        <code>_self</code> (es el valor per defecte): obre l'enllaç a la mateixa
+        <code>_self</code> (és el valor per defecte): obre l'enllaç a la mateixa
         pestanya.
       </li>
       <li><code>_blank</code>: obre l'enllaç en una nova pestanya.</li>
@@ -25,37 +28,48 @@
       </li>
       <li><code>_top</code>: obre l'enllaç a la finestra superior.</li>
     </ul>
+
+    <!-- Exemples pràctics de target -->
     <p>Exemples:</p>
     <ul>
       <li>
-        <a href="https://www.google.org" target="_self"
-          >Obre Google a la mateixa pestanya</a
-        >
+        <a href="https://www.google.org" target="_self">
+          Obre Google a la mateixa pestanya
+        </a>
       </li>
       <li>
-        <a href="https://www.google.org" target="_blank"
-          >Obre Google en una nova pestanya</a
-        >
+        <a href="https://www.google.org" target="_blank">
+          Obre Google en una nova pestanya
+        </a>
       </li>
     </ul>
 
     <hr />
 
+    <!-- Diferències entre rutes absolutes i relatives -->
     <h2>Diferència entre rutes absolutes i rutes relatives</h2>
     <ul>
+      <!-- Ruta absoluta amb domini complet -->
       <li>
         <strong>Ruta absoluta:</strong> especifica la ubicació completa del
-        recurs, incloent el <i>protocol i el domini</i>. <br />Exemple:
+        recurs, incloent el <i>protocol i el domini</i>. <br />
+        Exemple:
         <a href="https://www.google.com">https://www.google.com</a>
       </li>
+
+      <!-- Ruta relativa dins la mateixa web -->
       <li>
         <strong>Ruta relativa:</strong> fa referència a un recurs dins la
-        mateixa estructura de carpetes del lloc web. <br />Exemples:
+        mateixa estructura de carpetes del lloc web. <br />
+        Exemples:
         <ul>
+          <!-- Arxiu al mateix nivell -->
           <li><a href="texts.html">texts.html</a> (al mateix directori)</li>
+          <!-- Arxiu en una subcarpeta -->
           <li>
             <a href="img/Sora.png">img/Sora.png</a> (a dins d'una subcarpeta)
           </li>
+          <!-- Arxiu en un nivell superior -->
           <li>
             <a href="../pla1/Hello-world.html">../pla1/Hello-world.html</a> (al
             afegir <i>../</i> puja un nivell en l'estructura)
@@ -66,18 +80,23 @@
 
     <hr />
 
+    <!-- Explicació de l’ús de mailto: -->
     <h2>Enllaçar amb una adreça de correu electrònic</h2>
     <p>
-      <strong><code>mailto:</code></strong> s'utlitza per enviar un correu
-      electronic directe a la adreça que hi haiguia continuació del
-      <i>mailto:</i> obrint directament el nostre gestor de mails predeterminat.
+      <strong><code>mailto:</code></strong> s'utilitza per enviar un correu
+      electrònic directe a l’adreça que apareix després del <i>mailto:</i>,
+      obrint el gestor de correu predeterminat.
     </p>
+
+    <!-- Exemple bàsic d’enviament de correu -->
     <p>Exemple:</p>
     <p>
-      <a href="mailto:exemple@correu.com"
-        >Envia un correu a exemple@correu.com</a
-      >
+      <a href="mailto:exemple@correu.com">
+        Envia un correu a exemple@correu.com
+      </a>
     </p>
+
+    <!-- Exemple amb assumpte i cos predefinit -->
     <p>També es pot preomplir l'assumpte i el cos del missatge:</p>
     <p>
       <a
@@ -86,6 +105,8 @@
         Envia un correu amb assumpte i cos predefinits
       </a>
     </p>
+
+    <!-- Enllaç de retorn a l’índex -->
     <p><a href="/pla2/index.html">Tornar a l'índex</a></p>
   </body>
 </html>

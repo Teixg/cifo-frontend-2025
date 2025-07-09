@@ -3,14 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta name="author" content="Teix Garcia" />
+
+    <title>Pla2-Formularis</title>
   </head>
   <body>
     <form>
       <h1>FORMULARIS</h1>
+
       <h2>Formulari PLA2</h2>
+
       <hr />
       <br />
+
+      <!-- Camps de text per nom i cognoms -->
       <label> Nom: </label>
       <input type="text" />
       &nbsp;
@@ -19,8 +25,11 @@
 
       <br /><br />
 
+      <!-- Camp per seleccionar una data de naixement -->
       <label> Data de naixement: </label>
       <input type="date" name="dataNaixement" />
+
+      <!-- Selector desplegable per indicar el gènere -->
       &nbsp;
       <label> Genere </label>
       <select name="Gènere">
@@ -32,35 +41,50 @@
 
       <br /><br />
 
+      <!-- Selector de color -->
       <label>Color preferit:</label>
       <input type="color" name="color" />
+
+      <!-- Opcions de resposta amb ràdio buttons per triar l’animal preferit -->
       &nbsp;
       <label>Animal Preferit:</label>
       <input type="radio" name="radio" value="Gat" /><label>Gat</label>
-      <input type="radio" name="radio" value="Gat" /><label>Gos</label>
-      <input type="radio" name="radio" value="Gat" /><label>Altres</label>
+      <input type="radio" name="radio" value="Gos" /><label>Gos</label>
+      <input type="radio" name="radio" value="Altres" /><label>Altres</label>
 
       <br /><br />
 
+      <!-- Pregunta amb checkbox sobre si ha triat el gat com animal preferit -->
       <label>Has triat gat com animal preferit?</label><br />
-      <input type="checkbox" /><label>Si</label>&nbsp;<input
-        type="checkbox"
-      /><label>No</label>
+      <input type="checkbox" /><label>Si</label>
+      &nbsp;
+      <input type="checkbox" /><label>No</label>
 
       <br /><br />
 
+      <!-- Camp per indicar nombre de gats -->
       <label>Quants gats tens?</label>
       <input type="number" />
+
       <br /><br />
+
+      <!-- Àrea de text per resposta oberta -->
       <label
         >Perquè diries que els gats són el millor animal de companyia?</label
       >
       <br />
-      <textarea>Desarolla amb minim 5 linies</textarea> <br /><br />
+      <textarea>Desarolla amb minim 5 linies</textarea>
+
+      <br /><br />
+
+      <!-- Botó d’enviament del formulari -->
       <input type="submit" />
+
+      <br />
+      <hr />
     </form>
-    <br />
-    <hr />
+
+    <!-- Enllaç de retorn a l’índex -->
     <p><a href="/pla2/index.html">Tornar a l'índex</a></p>
   </body>
 </html>
