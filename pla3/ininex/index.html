@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS inline/internal/external</title>
+    <link
+      rel="stylesheet"
+      href="
+    styles.css"
+    />
+    <style>
+      #internal {
+        background-color: cadetblue;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <ul>
+        <li style="color: chocolate">Exemple de CSS inline</li>
+        <li id="internal">Exemple de CSS internal</li>
+        <li id="external">Exemple de CSS external</li>
+      </ul>
+    </header>
+
+    <div class="cssExp">
+      <p class="Exp">
+        Una explicació breu sobre quan és més recomanable fer servir l'opció
+        internal per sobre de l'opció external i quan és més recomanable fer
+        servir l'opció external per sobre de l'opció internal
+      </p>
+
+      <p>
+        <strong
+          >Internal (CSS dins d’una etiqueta &lt;style&gt; al
+          &lt;head&gt;):</strong
+        >
+      </p>
+      <ul>
+        <li>
+          És recomanable nomes quan es treballa amb
+          <strong>una sola pàgina web</strong>.
+        </li>
+        <li>
+          Permet <strong>provar o aplicar estils ràpidament</strong> sense arxiu
+          separat.
+        </li>
+        <li>És útil en <strong>projectes petits o temporals</strong>.</li>
+      </ul>
+
+      <p><strong>External (CSS en un fitxer .css separat):</strong></p>
+      <ul>
+        <li>
+          És ideal quan el lloc té <strong>múltiples pàgines</strong> amb el
+          mateix estil o elements compartits.
+        </li>
+        <li>
+          Ajuda a mantenir el codi
+          <strong>net, organitzat i reutilitzable</strong>.
+        </li>
+        <li>
+          Millora el rendiment gràcies a la
+          <strong>memòria cau del navegador</strong>.
+        </li>
+      </ul>
+    </div>
+
+    <div class="cssExp">
+      <p class="Exp">
+        Una explicació breu sobre quins són els inconvenients de fer servir
+        l'opció inline . Malgrat tot, quan és recomanable fer servir aquesta
+        opció?
+      </p>
+      <ul>
+        <li>
+          <strong>Dificulta el manteniment</strong> del codi si hi ha molts
+          estils.
+        </li>
+        <li><strong>Empitjora la llegibilitat</strong> de l’HTML.</li>
+        <li>No permet <strong>reutilitzar estils</strong> fàcilment.</li>
+        <li>
+          <strong>No separa estructura i presentació</strong>, trencant les
+          bones pràctiques.
+        </li>
+      </ul>
+
+      <p><strong>Quan es recomana usar inline?</strong></p>
+      <ul>
+        <li>
+          Quan cal aplicar <strong>un estil molt específic i únic</strong> a un
+          sol element.
+        </li>
+        <li>
+          Per fer <strong>proves ràpides</strong> durant el desenvolupament.
+        </li>
+        <li>
+          Per <strong>sobreescriure altres estils</strong> (encara que no és
+          recomanable a llarg termini).
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
