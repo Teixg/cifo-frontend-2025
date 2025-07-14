@@ -1,0 +1,96 @@
+/*
+.color1 { #82837e };
+.color2 { #94b053 };
+.color3 { #bdeb07 };
+.color4 { #bffa37 };
+.color5 { #e0e0e0 };
+*/
+
+caption {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: larger;
+}
+h1{
+  background-color:  #82837e;
+  margin-top: 0;
+  padding: 1rem;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  color:#e0e0e0;
+  border-radius: 1rem;
+}
+table {
+  font-family: Arial, Helvetica, sans-serif;
+  width: -webkit-fill-available;
+  color: #94b053;
+  border-bottom: 0.1rem;
+  border-top: 0.1rem;
+  border-left: 0rem;
+  border-right: 0rem;
+  border-style: solid;
+  border-collapse: collapse; /* He tingut que fer recerca per poder tocar el border de les <tr> i he vist que calia afegir 
+  aquesta propietat, ja que sino nomes pots editar les th y td ( al menys per el que fa al "border") ja que per defecte, les taules tenen border-collapse: separate, 
+  que separa les cel·les i no aplica el border directament a les <tr>- Link al recurs: https://stackoverflow.com/questions/10040842/add-border-bottom-to-table-row-tr
+*/
+}
+.fa-solid{
+  color: #b5d828;
+  font-size: 2rem;
+  padding: 1rem;
+
+}
+
+#tTitle{
+color:  #b5d828;
+font-size: xx-large;
+text-align: left;
+}
+
+
+tr {
+  border-bottom: 0.1rem;
+  border-top: 0rem;
+  border-left: 0rem;
+  border-right: 0rem;
+  border-style: solid;
+}
+
+#tableHead{
+  background-color: rgb(240, 240, 240);
+  border-bottom: 0.3rem;
+  border-top: 0rem;
+  border-left: 0rem;
+  border-right: 0rem;
+  border-style:outset;
+  
+}
+
+th {
+  text-align: left;
+  padding: 0.5rem;
+}
+.mess{
+  padding-left: 2.5rem;  
+}
+
+td{
+  color: black;
+  text-align:left;
+}
+
+.checked {
+  color: #e0e0e0;
+}
+
+.fa-arrow-down{
+  color:#94b053;
+  font-size: medium;
+  padding-left:0.3rem;
+  padding-bottom: 0.2rem;
+  padding-top: 0.2rem;
+}
+
+.fa-circle-user{
+  padding: 0.4rem;
+  color: #e0e0e0;
+}
