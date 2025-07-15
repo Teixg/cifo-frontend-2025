@@ -1,0 +1,59 @@
+/* Exemple 1: Es trenca l'empat pel valor de l'ID  */
+p.exemple1 {
+  color: green;
+  /* specificity: 0, 0, 1, 1 */
+}
+
+#important {
+  color: red;
+  /* specificity: 0, 1, 0, 0 */
+}
+
+
+/* Exemple 2: Es trenca l'empat pel nombre de classes */
+.exemple2 {
+  color: blue;
+  /* specificity: 0, 0, 1, 0 */
+}
+
+p.exemple2 {
+  color: orange;
+  /* specificity: 0, 0, 1, 1 */
+}
+
+
+/* Exemple 3: Es trenca l'empat pel nombre d’elements  */
+.exemple3 {
+  color: purple;
+  /* specificity: 0, 0, 1, 0 */
+}
+
+section p.exemple3 {
+  color: darkorange;
+  /* specificity: 0, 0, 1, 2 */
+}
+
+
+/* Exemple 4: Classes combinades (major especificitat per múltiples classes) */
+.destacat {
+  color: brown;
+  /* specificity: 0, 0, 1, 0 */
+}
+
+.exemple4.destacat {
+  color: teal;
+  /* specificity: 0, 0, 2, 0 */
+}
+
+
+/* Exemple 5: Mateixa especificitat, es trenca per l'ordre d'aparició */
+.exemple5 {
+  color: darkblue;
+  /* specificity: 0, 0, 1, 0 */
+}
+
+.exemple5 {
+  color: crimson;
+  /* specificity: 0, 0, 1, 0 */
+  /* guanya perquè està després */
+}

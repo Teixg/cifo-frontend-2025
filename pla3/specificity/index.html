@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Especificitat CSS</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Demostració d'Especificitat</h1>
+
+    <section>
+      <p class="exemple1">Exemple 1: Empat trencat pel nombre d'IDs</p>
+      <p class="exemple2" id="important">
+        Exemple 2: Empat trencat pel nombre de classes
+      </p>
+      <p class="exemple3">Exemple 3: Empat trencat pel nombre d'elements</p>
+      <p class="exemple4 destacat">
+        Exemple 4: Empat trencat pel nombre de classes combinades
+      </p>
+      <div>
+        <p class="exemple5">
+          Exemple 5: Empat pel mateix selector, trencat per ordre d'aparició
+        </p>
+      </div>
+      <p class="exemple6" style="color: black">
+        Exemple 6: Empat trencat per estil inline
+      </p>
+      <!-- specificity: 1,0,0,0 -->
+    </section>
+
+    <section>
+      <h2>
+        Una explicació breu sobre per què serveix exactament l'anotació
+        !important i per què cal anar amb molt de compte a l'hora de fer-lo
+        servir.
+      </h2>
+      <p>
+        L’anotació !important serveix per forçar que una regla CSS s’apliqui per
+        sobre de qualsevol altra, independentment de l’especificitat. És útil en
+        casos puntuals, com per sobreescriure estils de llibreries externes. No
+        obstant això, cal anar amb compte, ja que pot dificultar el manteniment
+        i trencar la lògica del CSS. S’ha d’evitar com a solució habitual.
+      </p>
+    </section>
+  </body>
+</html>
