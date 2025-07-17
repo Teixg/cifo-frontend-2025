@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid</title>
+    <style>
+      body {
+        background-color: rgb(53, 53, 145);
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+      h1 {
+        color: #fff;
+      }
+      h2 {
+        max-width: 50rem;
+        color: rgb(194, 194, 194);
+      }
+
+      .container {
+        display: grid;
+        justify-items: center;
+      }
+      p {
+        max-width: 50rem;
+        background-color: cornflowerblue;
+        padding: 1rem;
+        border-radius: 0.4rem;
+        color: #fff;
+        box-shadow: 0 1rem 1rem 0 rgb(0, 0, 0, 0.6);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Grid</h1>
+      <h2>
+        Una breu explicació sobre quina és la principal diferència entre els
+        sistemes flexbox i grid , quin d'ells va aparèixer abans i quin cas d'ús
+        s'adapta millor a cada sistema.
+      </h2>
+      <p>
+        La principal diferència és que flexbox està pensat per a l'alineació
+        d'elements en una sola direcció (fila o columna), mentre que grid permet
+        dissenyar en dues dimensions (files i columnes a la vegada). Flexbox va
+        aparèixer abans que grid. Flexbox és ideal per distribuir espai dins de
+        components lineals, mentre que grid és millor per dissenyar estructures
+        complexes i maquetacions generals.
+      </p>
+      <h2>
+        Una breu explicació sobre què fan i com s'utilitzen les funcions CSS
+        minmax() i repeat() .
+      </h2>
+      <p>
+        La funció minmax() defineix un rang de mida per a una columna o fila en
+        CSS Grid, indicant una mida mínima i una màxima (ex: minmax(100px,
+        1fr)). La funció repeat() permet repetir un patró de columnes o files,
+        evitant escriure-les una per una (ex: repeat(3, 1fr) crea tres columnes
+        iguals). Ambdues s’utilitzen dins de la propietat grid-template-columns
+        o grid-template-rows.
+      </p>
+      <h2>
+        Una breu explicació sobre per a què serveix la propietat
+        grid-template-columns , què signifiquen els valors que se li assignen i
+        en quines unitats es poden i s'acostumen a informar aquests valors.
+      </h2>
+      <p>
+        La propietat grid-template-columns serveix per definir l'amplada i el
+        nombre de columnes en un disseny amb CSS Grid. Els valors que se li
+        assignen representen la mida de cada columna, en l'ordre que es
+        declaren. Es poden usar unitats com píxels (px), percentatges (%),
+        unitats relatives (em, rem) o fraccions (fr), que són molt comunes en
+        grid per repartir espai de forma flexible.
+      </p>
+    </div>
+  </body>
+</html>
