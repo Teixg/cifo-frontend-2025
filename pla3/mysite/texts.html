@@ -1,77 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="Teix Garcia" />
-    <link
-      rel="stylesheet"
-      href="
-    styles2.css"
-    />
 
-    <title>Pla3-Texts</title>
-  </head>
-  <body>
-    <!-- Títol principal amb l'etiqueta <h1> -->
-    <h1>Exemples d'etiquetes com aquesta que és una etiqueta &#60;h1&#62;</h1>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Teix Garcia" />
+  <link rel="stylesheet" href="
+    styles2.css" />
+  <style>
+    @media(max-width:600px) {
+      body {
+        background-color: #9004;
+      }
+    }
 
-    <hr />
+    @media((min-width:600px) and (max-width:1200px)) {
+      body {
+        background-color: #0904;
+      }
+    }
 
-    <h2>Aquesta és una etiqueta &#60;h2&#62;</h2>
-    <h3>i aquesta una etiqueta &#60;h3&#62;</h3>
+    @media(min-width:1200px) {
+      body {
+        background-color: #0094;
+      }
+    }
+  </style>
+  <title>Pla3-Texts</title>
+</head>
 
-    <!-- Exemple d’ús del paràgraf <p> amb <strong> i <em> -->
+<body>
+  <!-- Títol principal amb l'etiqueta <h1> -->
+  <h1>Exemples d'etiquetes com aquesta que és una etiqueta &#60;h1&#62;</h1>
+
+  <hr />
+
+  <h2>Aquesta és una etiqueta &#60;h2&#62;</h2>
+  <h3>i aquesta una etiqueta &#60;h3&#62;</h3>
+
+  <!-- Exemple d’ús del paràgraf <p> amb <strong> i <em> -->
+  <p>
+    Aquí ja tenim una etiqueta &#60;p&#62;Lorem ipsum dolor sit amet,
+    consectetur adipiscing elit. Aenean semper pharetra lectus sit amet
+    consequat. Aliquam faucibus porta blandit.
+    <strong>
+      Duis varius pulvinar, aquí un exemple de l'etiqueta &#60;strong&#62;
+    </strong>
+    purus ac commodo. Ut semper nisl libero, in iaculis ex efficitur eu.
+    Aenean suscipit luctus
+    <em>diam pretium placerat. Un exemple de l'etiqueta &#60;em&#62;</em>
+    ...
+  </p>
+
+  <!-- Exemple de citació amb <blockquote> -->
+  <blockquote>
+    Fusce ornare nunc sed ullamcorper porttitor... Aquesta seria una
+    &#60;blockquote&#62;
+  </blockquote>
+
+  <!-- Exemple de referència o autor amb <cite> -->
+  <cite>I aquí una etiqueta &#60;cite&#62;</cite>
+
+  <h2>Explicacions d'etiquetes</h2>
+
+  <ul>
+    <li>
+      <!-- Diferència entre <b> i <strong> -->
+      <p>
+        L'etiqueta &#60;b&#62; es fa servir per quan volem emprar la versió
+        "bold"... &#60;strong&#62; per marcar amb especial èmfasis...
+      </p>
+    </li>
+    <li>
+      <!-- Diferència entre <i> i <em> -->
+      <p>
+        L'etiqueta &#60;i&#62; per cursiva... &#60;em&#62; per marcar
+        èmfasi...
+      </p>
+    </li>
+  </ul>
+  <section id="codis-css">
+    <h2>Codis de color CSS: #9004, #0904 i #0094</h2>
     <p>
-      Aquí ja tenim una etiqueta &#60;p&#62;Lorem ipsum dolor sit amet,
-      consectetur adipiscing elit. Aenean semper pharetra lectus sit amet
-      consequat. Aliquam faucibus porta blandit.
-      <strong>
-        Duis varius pulvinar, aquí un exemple de l'etiqueta &#60;strong&#62;
-      </strong>
-      purus ac commodo. Ut semper nisl libero, in iaculis ex efficitur eu.
-      Aenean suscipit luctus
-      <em>diam pretium placerat. Un exemple de l'etiqueta &#60;em&#62;</em>
-      ...
+      Els codis #9004, #0904 i #0094 són codis de color en format hexadecimal
+      utilitzats en CSS per definir colors amb
+      transparència. Tot i que habitualment es fan servir 6 dígits (#RRGGBB), també són vàlids els formats
+      de 4 dígits (#RGBA) i 8 dígits (#RRGGBBAA).
     </p>
-
-    <!-- Exemple de citació amb <blockquote> -->
-    <blockquote>
-      Fusce ornare nunc sed ullamcorper porttitor... Aquesta seria una
-      &#60;blockquote&#62;
-    </blockquote>
-
-    <!-- Exemple de referència o autor amb <cite> -->
-    <cite>I aquí una etiqueta &#60;cite&#62;</cite>
-
-    <h2>Explicacions d'etiquetes</h2>
-
+    <p>
+      En el format #RGBA, cada dígit representa:
+    </p>
     <ul>
-      <li>
-        <!-- Diferència entre <b> i <strong> -->
-        <p>
-          L'etiqueta &#60;b&#62; es fa servir per quan volem emprar la versió
-          "bold"... &#60;strong&#62; per marcar amb especial èmfasis...
-        </p>
-      </li>
-      <li>
-        <!-- Diferència entre <i> i <em> -->
-        <p>
-          L'etiqueta &#60;i&#62; per cursiva... &#60;em&#62; per marcar
-          èmfasi...
-        </p>
-      </li>
+      <li><strong>R</strong>: Component de vermell (Red)</li>
+      <li><strong>G</strong>: Component de verd (Green)</li>
+      <li><strong>B</strong>: Component de blau (Blue)</li>
+      <li><strong>A</strong>: Alfa (opacitat)</li>
     </ul>
 
-    <!-- Enllaç de retorn a l’índex -->
-    <p class="dissabled">
-      <a class="aIndex" href="">Tornar a l'índex</a
-      ><img
-        class="arrow"
-        src="https://www.di-da.eus/wp-content/uploads/2018/07/arrow-icon-28-300x300.png"
-        alt=""
-      />
-      Aquest boto ha estat desactivat per motius practics
+    <h3>Ús de lletres i dígits</h3>
+    <p>
+      Els codis poden incloure lletres de la A a la F, que representen valors del 10 al 15 en hexadecimal.
     </p>
-  </body>
+    <h3>Funcionament de la codificació</h3>
+    <p>
+      Cada dígit és un valor hexadecimal (de 0 a F), i el navegador l’expandeix duplicant els
+      caràcters. Per exemple, #9004 es converteix en #99000044, que representa un vermell fosc
+      amb poca opacitat.
+    </p>
+    <p>
+      Aquests codis poden incloure lletres (de A a F) perquè utilitzen el sistema hexadecimal,
+      que va del 0 al 15.
+    </p>
+  </section>
+  <!-- Enllaç de retorn a l’índex -->
+  <p class="dissabled">
+    <a class="aIndex" href="">Tornar a l'índex</a><img class="arrow"
+      src="https://www.di-da.eus/wp-content/uploads/2018/07/arrow-icon-28-300x300.png" alt="" />
+    Aquest boto ha estat desactivat per motius practics
+  </p>
+</body>
+
 </html>
