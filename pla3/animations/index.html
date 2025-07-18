@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Animations</title>
+</head>
+
+<body>
+    <h1>Animacions</h1>
+    <div class="container">
+        <h2>Animació de <em>pulsació</em></h2>
+        <div class="box pulse">Pulse</div>
+        <p>Amplia i redueix la mida de l'element fent un efecte de "bategar".</p>
+        <ul>
+            <li><strong>Punts clau:</strong> Ús de la transformació scale i control del temps amb animation-duration i
+                ease-in-out.</li>
+            <li><strong>Com canviar:</strong>
+                <ul>
+                    <li>Modificar animation-duration per fer-la més ràpida o lenta.</li>
+                    <li>Ajustar el valor de scale() per ampliar més o menys.</li>
+                    <li>Canviar ease-in-out per variar la suavitat.</li>
+                </ul>
+            </li>
+        </ul>
+        <h2>Animació de <em>desplaçament horitzontal</em></h2>
+        <div class="box slide">Slide</div>
+        <p>Mou l'element cap a la dreta i torna a la posició inicial.</p>
+        <ul>
+            <li><strong>Punts clau:</strong> translateX controla el desplaçament i
+                animation-direction: alternate fa el moviment d'anada i tornada.
+            </li>
+            <li><strong>Com canviar:</strong>
+                <ul>
+                    <li>Modificar translateX() per canviar la distància.</li>
+                    <li>Ajustar animation-duration per variar la velocitat.</li>
+                    <li>Treure alternate per fer el moviment només en una direcció.</li>
+                </ul>
+            </li>
+        </ul>
+        <h2>Animació de <em>rotació contínua</em></h2>
+        <div class="box rotate">Rotate</div>
+        <p>Gira l'element 360 graus de forma contínua.</p>
+        <ul>
+            <li><strong>Punts clau:</strong> Ús de rotate() dins d’una animació infinita.</li>
+            <li><strong>Com canviar:</strong>
+                <ul>
+                    <li>Ajustar animation-duration per canviar la velocitat de gir.</li>
+                    <li>Fer servir valors negatius com rotate(-360deg) per canviar el sentit.</li>
+                </ul>
+            </li>
+        </ul>
+        <h2>Animació de <em>canvi de color de fons</em></h2>
+        <div class="box colorChange">Color</div>
+        <p>Transiciona el color de fons entre tres colors.</p>
+        <ul>
+            <li><strong>Punts clau:</strong> Ús de punts en el temps (0%, 50%, 100%) amb diferents
+                background-color.
+            </li>
+            <li><strong>Com canviar:</strong>
+                <ul>
+                    <li>Afegir més punts de percentatge per afegir més colors.</li>
+                    <li>Modificar animation-duration per fer la transició més lenta o ràpida.</li>
+                </ul>
+            </li>
+        </ul>
+        <h2>Animació <em>d'opacitat</em></h2>
+        <div class="box fadeInOut">Fade</div>
+        <p>Alterna entre visible i transparent de forma suau.</p>
+        <ul>
+            <li><strong>Punts clau:</strong> Ús de l'opacitat entre 0 i 1.</li>
+            <li><strong>Com canviar:</strong>
+                <ul>
+                    <li>Modificar animation-duration per canviar la velocitat del parpelleig.</li>
+                    <li>Ajustar els punts dels keyframes per controlar la durada visible o invisible.
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <h2>Animació de <em>de bot (moviment vertical)</em></h2>
+        <div class="box bounce">Bounce</div>
+        <p>Simula un bot amb moviment vertical suau.</p>
+        <ul>
+            <li><strong>Punts clau:</strong> translateY per moure verticalment i cubic-bezier
+                per controlar la suavitat o elasticitat del bot.</li>
+            <li><strong>Com canviar:</strong>
+                <ul>
+                    <li>Canviar translateY() per fer un bot més alt o més suau.</li>
+                    <li>Ajustar animation-duration per fer el bot més ràpid o lent.</li>
+                    <li>Modificar la funció cubic-bezier per personalitzar el ritme del moviment.</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>

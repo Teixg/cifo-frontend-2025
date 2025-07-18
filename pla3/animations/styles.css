@@ -1,0 +1,115 @@
+body {
+  background: #222;
+  color: #eee;
+  font-family: Arial, Helvetica, sans-serif;
+}
+h1 {
+  margin-top: 2rem;
+  margin-left: 2rem;
+}
+h2 {
+  margin-top: 3rem;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.box {
+  width: 120px;
+  height: 120px;
+  background: cornflowerblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Animació de pulsació  */
+.pulse {
+  animation: pulseAnim 2s ease-in-out infinite;
+}
+@keyframes pulseAnim {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+/* Animació de desplaçament horitzontal  */
+.slide {
+  animation: slideAnim 3s linear infinite alternate;
+}
+@keyframes slideAnim {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100px);
+  }
+}
+
+/* Animació de rotació contínua  */
+.rotate {
+  animation: rotateAnim 4s linear infinite;
+}
+@keyframes rotateAnim {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Animació de canvi de color de fons  */
+.colorChange {
+  animation: colorChangeAnim 5s ease-in-out infinite alternate;
+}
+@keyframes colorChangeAnim {
+  0% {
+    background-color: cornflowerblue;
+  }
+  50% {
+    background-color: mediumseagreen;
+  }
+  100% {
+    background-color: tomato;
+  }
+}
+
+/* Animació d'aparició i desaparició amb opacitat  */
+.fadeInOut {
+  animation: fadeAnim 3s ease-in-out infinite alternate;
+}
+@keyframes fadeAnim {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Animació de bot (moviment vertical)  */
+.bounce {
+  animation: bounceAnim 2s cubic-bezier(0.28, 0.84, 0.42, 1) infinite;
+}
+@keyframes bounceAnim {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+}
