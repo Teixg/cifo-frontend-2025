@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Teix Garcia" />
+    <title>Components</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="./styles.css">
+
+</head>
+
+<body>
+    <h1>Components</h1>
+
+    <section class="container">
+        <h2>Buttons</h2>
+        <button type="button" class="btn btn-primary">Primary</button>
+        <button type="button" class="btn btn-secondary">Secondary</button>
+        <button type="button" class="btn btn-success">Success</button>
+        <button type="button" class="btn btn-danger">Danger</button>
+        <button type="button" class="btn btn-warning">Warning</button>
+        <button type="button" class="btn btn-info">Info</button>
+        <button type="button" class="btn btn-light">Light</button>
+        <button type="button" class="btn btn-dark">Dark</button>
+        <button type="button" class="btn btn-link">Link</button>
+    </section>
+
+    <section class="container">
+        <h2>Button group</h2>
+
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-primary">Left</button>
+            <button type="button" class="btn btn-primary">Middle</button>
+            <button type="button" class="btn btn-primary">Right</button>
+        </div>
+        <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+            <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btncheck1">Checkbox 1</label>
+
+            <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btncheck2">Checkbox 2</label>
+
+            <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btncheck3">Checkbox 3</label>
+        </div>
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+            <button type="button" class="btn btn-primary">1</button>
+            <button type="button" class="btn btn-primary">2</button>
+
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Dropdown
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Dropdown link 1</a></li>
+                    <li><a class="dropdown-item" href="#">Dropdown link 2</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="container">
+        <h2>Placeholders</h2>
+
+        <p aria-hidden="true">
+            <span class="placeholder col-6"></span>
+        </p>
+
+        <a class="btn btn-primary disabled placeholder col-4" aria-disabled="true"></a>
+        <span class="placeholder col-12"></span>
+
+        <span class="placeholder col-12 bg-primary"></span>
+        <span class="placeholder col-12 bg-secondary"></span>
+        <span class="placeholder col-12 bg-success"></span>
+        <span class="placeholder col-12 bg-danger"></span>
+        <span class="placeholder col-12 bg-warning"></span>
+        <span class="placeholder col-12 bg-info"></span>
+        <span class="placeholder col-12 bg-light"></span>
+        <span class="placeholder col-12 bg-dark"></span>
+    </section>
+    <section class="container">
+        <h2>Spinners</h2>
+        <div class="spinner-grow text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-secondary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-success" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        </div>
+        <button class="btn btn-primary" type="button" disabled>
+            <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+            <span class="visually-hidden" role="status">Loading...</span>
+        </button>
+        <button class="btn btn-primary" type="button" disabled>
+            <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+            <span role="status">Loading...</span>
+        </button>
+    </section>
+    <section class="container">
+        <h2>Card</h2>
+        <div class="card w-75 mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Kingdom Hearts</h5>
+                <p class="card-text">Kingdom Hearts es una serie de videojuegos, perteneciente al género de juegos
+                    de rol de acción, desarrollado y publicado por Square Enix</p>
+                <a href="#" class="btn btn-primary">Saber mas</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img src="./kh2.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Kingdom hearts 2</h5>
+                <p class="card-text">Kingdom Hearts II es un ARPG desarrollado por Square Enix y publicado por la
+                    misma
+                    empresa y Buena Vista Games para la consola PlayStation 2. . </p>
+                <a href="#" class="btn btn-primary">Seguir leyendo</a>
+                <div class="card-footer">
+                    <small class="text-body-primary">Last updated 3 mins ago</small>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

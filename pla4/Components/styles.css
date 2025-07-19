@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bs-body-color);
+  color: white;
+}
+
+.container {
+  margin: 3rem;
+}
+
+h1 {
+  color: white;
+  margin: 1rem;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 2rem;
+}
+
+.container {
+  background-color: var(--bs-gray-500);
+  padding: 3rem;
+  border-radius: 1rem;
+  box-shadow: 0.5rem 0.5rem rgba(0, 0, 0, 0.5);
+}
+
+.btn-group {
+  margin: 0 1rem;
+}
