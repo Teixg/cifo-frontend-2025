@@ -1,0 +1,43 @@
+body {
+  /*background-color: var(--bs-body-color);*/
+  background-image: url(./img/bg_dark_01.jpg);
+
+  color: #fff;
+  display: flex;
+  justify-content: center;
+}
+
+img {
+  max-width: 20rem;
+  max-height: 25rem;
+}
+
+ul {
+  list-style: none;
+  text-align: left;
+}
+
+.container {
+  margin: 2rem;
+}
+.row {
+  align-items: center;
+}
+
+.mini {
+  max-width: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.col-6 {
+  margin-top: 3rem;
+}
+
+#banner {
+  max-width: 50rem;
+  border-radius: 0.5rem;
+}
+
+#logo {
+  filter: drop-shadow(8px 8px 10px rgb(0, 0, 0));
+}
