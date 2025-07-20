@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="author" content="Teix garcia">
     <meta name="generator" content="Astro v5.9.2">
     <title>Cover Template · Bootstrap v5.3</title>
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/cover/">
@@ -120,6 +120,8 @@
             </path>
         </symbol>
     </svg>
+    <!-- Theme toggler dropdown (light/dark/auto) -->
+
     <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle"> <button
             class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button"
             aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)"> <svg
@@ -127,6 +129,8 @@
                 <use href="#circle-half"></use>
             </svg> <span class="visually-hidden" id="bd-theme-text">Toggle theme</span> </button>
         <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+            <!-- Light, Dark and Auto mode options -->
+
             <li> <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light"
                     aria-pressed="false"> <svg class="bi me-2 opacity-50" aria-hidden="true">
                         <use href="#sun-fill"></use>
@@ -153,7 +157,11 @@
                     </svg> </button> </li>
         </ul>
     </div>
+    <!-- Main layout container (Header + Main + Footer) -->
+
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <!-- Site header with logo and navigation -->
+
         <header class="mb-auto">
             <div>
                 <h3 class="float-md-start mb-0">Estudio ARQOS</h3>
@@ -163,6 +171,9 @@
                         class="nav-link fw-bold py-1 px-0" href="#">Interiorismo</a> </nav>
             </div>
         </header>
+
+        <!-- Main content: logo, heading, and CTA -->
+
         <main class="px-3">
             <img id="logo" src="./img/logo.png" alt="icon">
             <h1>Transformamos espacios en experiencias</h1>
@@ -173,6 +184,8 @@
             <p class="lead"> <a href="#" class="btn btn-lg btn-light fw-bold border-white bg-white">Solicita tu consulta
                     inicial</a> </p>
         </main>
+        <!-- Footer with credits -->
+
         <footer class="mt-auto text-white-50">
             <p>Cover template modified by <a href="https://github.com/Lagon93/cifo-frontend-2025"
                     class="text-white">Teix garcia</a>, for <a href="https://cifovirtual.cat/"
