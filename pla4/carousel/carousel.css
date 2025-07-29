@@ -85,7 +85,7 @@ body {
   padding-right: 0.5rem;
 }
 .carousel-item img {
-  max-width: 125rem;
+  width: 125rem;
 }
 .carousel-caption {
   color: white;
