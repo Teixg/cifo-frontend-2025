@@ -9,22 +9,33 @@ body {
 /*Header styles*/
 header {
 	display: flex;
-	flex-direction: column;
 	align-items: center;
 	text-align: center;
+	justify-content: center;
 	margin-bottom: 2rem;
 }
 .logo {
-	padding-top: 1rem;
-	width: 10rem;
+	width: 6rem;
 	height: auto;
 }
-
+/*Section callToAction*/
+.callToAction {
+	text-align: center;
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+}
+/*Section inputId*/
 .inputId {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
+
+#steamId {
+	max-width: 40rem;
+	width: 100%;
+}
+
 .btn {
 	margin-top: 1rem;
 }
