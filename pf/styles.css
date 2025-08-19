@@ -35,9 +35,35 @@ header {
 	width: 100%;
 }
 
-.btn {
-	margin-top: 1rem;
+.inputContainer {
+	position: relative;
+	width: 300px;
 }
+.form-control {
+	width: 100%;
+	border: 1px solid #ccc;
+	border-radius: 100px;
+	padding: 10px 100px 10px 20px;
+	line-height: 1;
+	box-sizing: border-box;
+	outline: none;
+}
+
+.fetchBtn {
+	position: absolute;
+	right: 3px;
+	top: 3px;
+	bottom: 3px;
+	border: 0;
+	background: #471e63;
+	color: #fff;
+	outline: none;
+	margin: 0;
+	padding: 0 1rem 0 1rem;
+	border-radius: 100%;
+	z-index: 2;
+}
+
 /*Section accordionSection*/
 .accordionSection {
 	margin: 2rem;
