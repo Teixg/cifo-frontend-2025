@@ -64,6 +64,10 @@ header {
 	z-index: 2;
 }
 
+.fetchBtn:hover {
+	background: #a581bd;
+}
+
 /*Section accordionSection*/
 .accordionSection {
 	margin: 2rem;
