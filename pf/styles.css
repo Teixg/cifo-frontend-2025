@@ -21,8 +21,7 @@ header {
 /*Section callToAction*/
 .callToAction {
 	text-align: center;
-	margin-top: 2rem;
-	margin-bottom: 2rem;
+	margin: 2rem;
 }
 /*Section inputId*/
 .inputId {
@@ -38,6 +37,28 @@ header {
 
 .btn {
 	margin-top: 1rem;
+}
+/*Section accordionSection*/
+.accordionSection {
+	margin: 2rem;
+}
+
+.accordion,
+.accordion-item,
+.accordion-button,
+.accordion-body {
+	background-color: transparent !important;
+	border: none;
+	color: #fff;
+}
+
+.accordion-button::after {
+	filter: invert(1);
+}
+
+.accordion-button:not(.collapsed) {
+	color: #979797;
+	background-color: transparent;
 }
 
 footer {
