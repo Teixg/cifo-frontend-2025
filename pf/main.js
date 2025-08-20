@@ -25,7 +25,9 @@ bt1.addEventListener("click", async () => {
         if (games.length > 0) {
             let gamesList = '<h2>Owned Games</h2><ul>';
             games.forEach(game => {
-                gamesList += `<li>${game.name} (App ID: ${game.appid})</li> <img src="${game.img_icon_url ? `https://cdn.akamai.steamstatic.com/steam/apps/${game.appid}/header.jpg` : 'https://via.placeholder.com/150'}" alt="${game.name} icon" ">`;
+                gamesList += 
+                `<li>${game.name} (App ID: ${game.appid})</li> 
+                <img src="${game.img_icon_url ? `https://cdn.akamai.steamstatic.com/steam/apps/${game.appid}/header.jpg` : 'https://via.placeholder.com/150'}" alt="${game.name} icon" ">`;
             });
             gamesList += '</ul>';
             document.getElementById("response").innerHTML += gamesList;
