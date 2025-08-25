@@ -112,8 +112,37 @@ document.addEventListener("DOMContentLoaded", () => {
 /* Task 3 solution ------------------------------------------------------------------------------ */
 
 /* Task 4 --------------------------------------------------------------------------------------- */
+function calculateAmount() {
+	const amounts = document.querySelectorAll(".amount");
+	let total = 0;
+	amounts.forEach((element) => {
+		total += parseFloat(element.textContent) || 0;
+	});
+	amounts[amounts.length - 1].textContent = total.toFixed(2);
+}
 
-// There is no initial provided code.
+document.addEventListener("DOMContentLoaded", () => {
+	const unpaid = document.querySelectorAll(
+		"#customers tbody tr td:nth-child(3)"
+	);
+	const totalAmount = document.querySelectorAll(".amount");
+	let total = 0;
+
+	unpaid.forEach((element) => {
+		if (element.textContent < 0) {
+			element.classList.add("unpaid");
+		}
+	});
+	calculateAmount();
+});
+
+function removeUnpaid() {
+	const unpaidRows = document.querySelectorAll("#customers tbody tr td.unpaid");
+	unpaidRows.forEach((element) => {
+		element.parentElement.remove();
+	});
+	calculateAmount();
+}
 
 /* Task 4 solution ------------------------------------------------------------------------------ */
 
