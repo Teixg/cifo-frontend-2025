@@ -149,7 +149,24 @@ function removeUnpaid() {
 /* Task 5 --------------------------------------------------------------------------------------- */
 
 let rating = 0;
-
+const stars = document.querySelectorAll(".star");
+for (let i of stars) {
+	i.onclick = () => {
+		rating = 0;
+		for (let j of stars) {
+			j.classList.remove("star-pink");
+			j.classList.add("star-gray");
+		}
+		for (let k of stars) {
+			rating++;
+			k.classList.remove("star-gray");
+			k.classList.add("star-pink");
+			if (k === i) {
+				break;
+			}
+		}
+	};
+}
 /* Task 5 solution ------------------------------------------------------------------------------ */
 
 /* Task 6 --------------------------------------------------------------------------------------- */
