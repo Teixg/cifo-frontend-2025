@@ -207,5 +207,25 @@ let topCoord = (leftCoord = 0);
 const fieldWidth = document.querySelector(".ball-container").clientWidth;
 // This is the height of the playground area.
 const fieldHeight = document.querySelector(".ball-container").clientHeight;
+const ball = document.querySelector(".ball-container div");
+ball.style.position = "absolute";
+ball.style.top = `${topCoord}px`;
+ball.style.left = `${leftCoord}px`;
+
+function moveBall() {
+	leftCoord += leftDelta;
+	topCoord += topDelta;
+	if (leftCoord <= 0 || leftCoord + ball.offsetWidth >= fieldWidth) {
+		leftDelta *= -1;
+	}
+	if (topCoord <= 0 || topCoord + ball.offsetHeight >= fieldHeight) {
+		topDelta *= -1;
+	}
+
+	ball.style.left = leftCoord + "px";
+	ball.style.top = topCoord + "px";
+}
+
+setInterval(moveBall, 30);
 
 /* Task 7 solution ------------------------------------------------------------------------------ */
