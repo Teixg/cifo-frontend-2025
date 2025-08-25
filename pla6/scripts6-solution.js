@@ -175,6 +175,25 @@ for (let i of stars) {
 const delta = 20;
 // Same initial value as left: 200px in CSS.
 let left = 200;
+const body = document.querySelector("body");
+const container = document.querySelector(".bar-container");
+const bar = document.querySelector(".bar");
+
+body.addEventListener("keydown", (event) => {
+	if (event.key === "ArrowLeft") {
+		left -= delta;
+		if (left < 0) {
+			left = 0;
+		}
+		bar.style.left = left + "px";
+	} else if (event.key === "ArrowRight") {
+		left += delta;
+		if (left > container.clientWidth - bar.offsetWidth) {
+			left = container.clientWidth - bar.offsetWidth;
+		}
+		bar.style.left = left + "px";
+	}
+});
 
 /* Task 6 solution ------------------------------------------------------------------------------ */
 
