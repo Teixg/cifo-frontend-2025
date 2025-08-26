@@ -170,6 +170,47 @@ if (firstVideo) {
 const apiUrl = "https://api.open-meteo.com/v1/forecast?timezone=Europe/Madrid";
 const latitude = 41.60594;
 const longitude = 1.039171;
+const daily = "temperature_2m_max,temperature_2m_min";
+
+// Final URL with all parameters
+const finalUrl = `${apiUrl}&latitude=${latitude}&longitude=${longitude}&daily=${daily}`;
+
+// Create a new XMLHttpRequest object
+const meteo = new XMLHttpRequest();
+
+// Open a GET request to the API endpoint with latitude, longitude and daily parameters
+meteo.open("GET", finalUrl, true);
+
+// Define what happens when the response is received
+meteo.onload = function () {
+	// Check if the request was successful (status code 200)
+	if (meteo.status === 200) {
+		// Parse the JSON response into a JavaScript object
+		const data = JSON.parse(meteo.responseText);
+
+		// Show the altitude (elevation) of Preixana in meters above sea level
+		console.log(
+			"L'alçada sobre el nivell del mar a la qual es troba Preixana és:",
+			data.elevation,
+			"metres"
+		);
+
+		// Get the array of minimum temperatures for the next days and limit
+		// the array to only the first 4 days
+		const tempMin = data.daily.temperature_2m_min.slice(0, 4);
+
+		// Show the 4-day forecast of minimum temperatures in °C
+		console.log(
+			"Previsió de temperatura mínima pels propers 4 dies (°C):",
+			tempMin
+		);
+	} else {
+		// If the request failed, log the error status
+		console.error("Error en la petició:", meteo.status);
+	}
+};
+
+meteo.send();
 
 /* Task 3 solution ------------------------------------------------------------------------------ */
 
