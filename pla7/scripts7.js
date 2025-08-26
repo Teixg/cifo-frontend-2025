@@ -15,7 +15,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 	// CREATE FUNCTIONS WITH THESE NAMES IN YOUR CODE AND THEN UNCOMMENT THESE LINES TO RUN THEM
 	ajaxWeather(); // Task 3
-	// fetchPokemon(); // Task 4 - fair use policy!!!
+	fetchPokemon(); // Task 4 - fair use policy!!!
 	// fetchDataFromFile('books7.json'); // Task 5
 	// fetchDataFromFile('not-found.json'); // Task 5
 	// fetchCors(); // Task 6
@@ -229,7 +229,32 @@ function ajaxWeather() {
 
 /* Task 4 --------------------------------------------------------------------------------------- */
 
-const pokeapiEndpoint = "https://pokeapi.co/api/v2/pokemon?offset=500&limit=50";
+function fetchPokemon() {
+	const pokeapiEndpoint =
+		"https://pokeapi.co/api/v2/pokemon?offset=500&limit=50";
+	fetch(pokeapiEndpoint)
+		.then((response) => {
+			if (!response.ok) {
+				throw new Error(`HTTP error: ${response.status}`);
+			}
+			return response.json();
+		})
+		.then((json) => {
+			const filteredNames = json.results.reduce((pNames, pokemon) => {
+				if (pokemon.name.includes("p")) {
+					pNames.push(pokemon.name);
+				}
+				return pNames;
+			}, []);
+			console.log(filteredNames);
+		})
+		.catch((err) => console.error(`Fetch problem: ${err.message}`));
+}
+/* En aquesta tasca vaig fer diverses "aproximacions" al que es demanava, però, profunditzant amb 
+els mètodes .map i .filter, vaig trobar aquest fil: 
+https://stackoverflow.com/questions/34398279/map-and-filter-an-array-at-the-same-time
+on hi ha una discussió sobre usar aquests mètodes junts i, per a certes ocasions, és més eficient 
+utilitzar .reduce, aixi que he intentat fer-ho així. */
 
 /* Task 4 solution ------------------------------------------------------------------------------ */
 
