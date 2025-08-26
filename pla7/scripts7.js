@@ -14,7 +14,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 	// CREATE FUNCTIONS WITH THESE NAMES IN YOUR CODE AND THEN UNCOMMENT THESE LINES TO RUN THEM
-	// ajaxWeather(); // Task 3
+	ajaxWeather(); // Task 3
 	// fetchPokemon(); // Task 4 - fair use policy!!!
 	// fetchDataFromFile('books7.json'); // Task 5
 	// fetchDataFromFile('not-found.json'); // Task 5
@@ -27,17 +27,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /**
  * The question about CORS:
- * Your answer here...
+ * Quan fem una crida des de Postman o REST Client, qui fa la petició és una aplicació
+ * d’escriptori. Aquestes eines envien la request directament al servidor, sense cap capa
+ * addicional. Per tant, no existeix cap restricció CORS perquè el navegador no hi està implicat.
+ * En canvi el JS de la web sí, i és el navegador qui aplica les restriccions de CORS.
  */
 
 /**
  * The question about promises:
- * Your answer here...
+ * Podem usar .then() per esperar la resposta i després treballar amb el JSON, o fer servir
+ * async/await dins d’una funció asíncrona per esperar la promesa i mostrar els resultats.
  */
 
 /**
  * The question about HTTP response status codes:
- * Your answer here...
+ * 200 -> La solicitut ha anat be.
+ * 201 -> La solicitut ha anat be i s’ha creat un nou recurs.
+ * 204 -> Tot bé però no retorna cap contingut.
+ * 301 -> Redirecció permanent a una altra URL.
+ * 401 -> No tens permisos/autenticació requerida.
+ * 404 -> El recurs no existeix (no trobat).
+ * 503 -> Servidor caigut o no disponible temporalment.
  */
 
 /* Task 2 --------------------------------------------------------------------------------------- */
@@ -165,52 +175,55 @@ if (firstVideo) {
 
 /* Task 3 --------------------------------------------------------------------------------------- */
 
-// Use these constants to build your final endpoint.
-// You will need four parameters (timezone is already provided, you need to add the other three).
-const apiUrl = "https://api.open-meteo.com/v1/forecast?timezone=Europe/Madrid";
-const latitude = 41.60594;
-const longitude = 1.039171;
-const daily = "temperature_2m_max,temperature_2m_min";
+function ajaxWeather() {
+	// Use these constants to build your final endpoint.
+	// You will need four parameters (timezone is already provided, you need to add the other three).
+	const apiUrl =
+		"https://api.open-meteo.com/v1/forecast?timezone=Europe/Madrid";
+	const latitude = 41.60594;
+	const longitude = 1.039171;
+	const daily = "temperature_2m_max,temperature_2m_min";
 
-// Final URL with all parameters
-const finalUrl = `${apiUrl}&latitude=${latitude}&longitude=${longitude}&daily=${daily}`;
+	// Final URL with all parameters
+	const finalUrl = `${apiUrl}&latitude=${latitude}&longitude=${longitude}&daily=${daily}`;
 
-// Create a new XMLHttpRequest object
-const meteo = new XMLHttpRequest();
+	// Create a new XMLHttpRequest object
+	const meteo = new XMLHttpRequest();
 
-// Open a GET request to the API endpoint with latitude, longitude and daily parameters
-meteo.open("GET", finalUrl, true);
+	// Open a GET request to the API endpoint with latitude, longitude and daily parameters
+	meteo.open("GET", finalUrl, true);
 
-// Define what happens when the response is received
-meteo.onload = function () {
-	// Check if the request was successful (status code 200)
-	if (meteo.status === 200) {
-		// Parse the JSON response into a JavaScript object
-		const data = JSON.parse(meteo.responseText);
+	// Define what happens when the response is received
+	meteo.onload = function () {
+		// Check if the request was successful (status code 200)
+		if (meteo.status === 200) {
+			// Parse the JSON response into a JavaScript object
+			const data = JSON.parse(meteo.responseText);
 
-		// Show the altitude (elevation) of Preixana in meters above sea level
-		console.log(
-			"L'alçada sobre el nivell del mar a la qual es troba Preixana és:",
-			data.elevation,
-			"metres"
-		);
+			// Show the altitude (elevation) of Preixana in meters above sea level
+			console.log(
+				"L'alçada sobre el nivell del mar a la qual es troba Preixana és:",
+				data.elevation,
+				"metres"
+			);
 
-		// Get the array of minimum temperatures for the next days and limit
-		// the array to only the first 4 days
-		const tempMin = data.daily.temperature_2m_min.slice(0, 4);
+			// Get the array of minimum temperatures for the next days and limit
+			// the array to only the first 4 days
+			const tempMin = data.daily.temperature_2m_min.slice(0, 4);
 
-		// Show the 4-day forecast of minimum temperatures in °C
-		console.log(
-			"Previsió de temperatura mínima pels propers 4 dies (°C):",
-			tempMin
-		);
-	} else {
-		// If the request failed, log the error status
-		console.error("Error en la petició:", meteo.status);
-	}
-};
+			// Show the 4-day forecast of minimum temperatures in °C
+			console.log(
+				"Previsió de temperatura mínima pels propers 4 dies (°C):",
+				tempMin
+			);
+		} else {
+			// If the request failed, log the error status
+			console.error("Error en la petició:", meteo.status);
+		}
+	};
 
-meteo.send();
+	meteo.send();
+}
 
 /* Task 3 solution ------------------------------------------------------------------------------ */
 
