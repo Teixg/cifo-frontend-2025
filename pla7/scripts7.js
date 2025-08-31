@@ -15,10 +15,11 @@
 document.addEventListener("DOMContentLoaded", () => {
 	// CREATE FUNCTIONS WITH THESE NAMES IN YOUR CODE AND THEN UNCOMMENT THESE LINES TO RUN THEM
 	ajaxWeather(); // Task 3
+	//
 	fetchPokemon(); // Task 4 - fair use policy!!!
-	// fetchDataFromFile('books7.json'); // Task 5
-	// fetchDataFromFile('not-found.json'); // Task 5
-	// fetchCors(); // Task 6
+	fetchDataFromFile("books7.json"); // Task 5
+	//fetchDataFromFile("not-found.json"); // Task 5
+	fetchCors(); // Task 6
 });
 
 /* Task 1 --------------------------------------------------------------------------------------- */
@@ -253,19 +254,57 @@ function fetchPokemon() {
 /* En aquesta tasca vaig fer diverses "aproximacions" al que es demanava, però, profunditzant amb 
 els mètodes .map i .filter, vaig trobar aquest fil: 
 https://stackoverflow.com/questions/34398279/map-and-filter-an-array-at-the-same-time
-on hi ha una discussió sobre usar aquests mètodes junts i, per a certes ocasions, és més eficient 
+on hi ha una discussió sobre usar aquests mètodes junts i, com per a certes ocasions, és més eficient 
 utilitzar .reduce, aixi que he intentat fer-ho així. */
 
 /* Task 4 solution ------------------------------------------------------------------------------ */
 
 /* Task 5 --------------------------------------------------------------------------------------- */
 
-// There is no initial provided code.
+async function fetchDataFromFile(localFile) {
+	try {
+		fetch(localFile);
+		let finalprice = 0;
+		const response = await fetch(localFile);
+		if (!response.ok) {
+			throw new Error(`HTTP error: ${response.status}`);
+		}
+		const data = await response.json();
 
+		for (let book of data) {
+			finalprice += book.price * 2;
+		}
+		console.log(Number(finalprice.toFixed(2)));
+	} catch (error) {
+		console.error("Error al fer la petició:", error);
+		return;
+	}
+}
 /* Task 5 solution ------------------------------------------------------------------------------ */
 
 /* Task 6 --------------------------------------------------------------------------------------- */
 
-// There is no initial provided code.
+//1.
+async function fetchCors() {
+	try {
+		const res = await fetch("http://itsthisforthat.com/api.php?json");
+		const data = await res.json();
+		console.log("Dades rebudes:", data);
+	} catch (err) {
+		console.error("Error per CORS:", err);
+	}
+
+	//2.
+	try {
+		const proxy = "https://corsproxy.io/?url=";
+		const url = "http://itsthisforthat.com/api.php?json";
+
+		const res = await fetch(proxy + url);
+		const data = await res.text();
+		console.log("Dades rebudes via proxy:", data);
+	} catch (err) {
+		console.error("Error:", err);
+	}
+}
 
 /* Task 6 solution ------------------------------------------------------------------------------ */
