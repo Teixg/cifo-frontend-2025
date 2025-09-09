@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	//
 	fetchPokemon(); // Task 4 - fair use policy!!!
 	fetchDataFromFile("books7.json"); // Task 5
-	//fetchDataFromFile("not-found.json"); // Task 5
+	fetchDataFromFile("not-found.json"); // Task 5
 	fetchCors(); // Task 6
 });
 
@@ -28,27 +28,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /**
  * The question about CORS:
- * Quan fem una crida des de Postman o REST Client, qui fa la petició és una aplicació
- * d’escriptori. Aquestes eines envien la request directament al servidor, sense cap capa
- * addicional. Per tant, no existeix cap restricció CORS perquè el navegador no hi està implicat.
- * En canvi el JS de la web sí, i és el navegador qui aplica les restriccions de CORS.
+ Quan fem una crida des de Postman o REST Client, qui fa la petició és una aplicació
+ d’escriptori. Aquestes eines envien la request directament al servidor, sense cap capa
+ addicional. Per tant, no existeix cap restricció CORS perquè el navegador no hi està implicat.
+ En canvi el JS de la web sí, i és el navegador qui aplica les restriccions de CORS.
  */
 
 /**
  * The question about promises:
- * Podem usar .then() per esperar la resposta i després treballar amb el JSON, o fer servir
- * async/await dins d’una funció asíncrona per esperar la promesa i mostrar els resultats.
+ Podem usar .then() per esperar la resposta i després treballar amb el JSON, o fer servir
+ async/await dins d’una funció asíncrona per esperar la promesa i mostrar els resultats.
  */
 
 /**
  * The question about HTTP response status codes:
- * 200 -> La solicitut ha anat be.
- * 201 -> La solicitut ha anat be i s’ha creat un nou recurs.
- * 204 -> Tot bé però no retorna cap contingut.
- * 301 -> Redirecció permanent a una altra URL.
- * 401 -> No tens permisos/autenticació requerida.
- * 404 -> El recurs no existeix (no trobat).
- * 503 -> Servidor caigut o no disponible temporalment.
+  200 -> La solicitut ha anat be.
+  201 -> La solicitut ha anat be i s’ha creat un nou recurs.
+  204 -> Tot bé però no retorna cap contingut.
+  301 -> Redirecció permanent a una altra URL.
+  401 -> No tens permisos/autenticació requerida.
+  404 -> El recurs no existeix (no trobat).
+  503 -> Servidor caigut o no disponible temporalment.
  */
 
 /* Task 2 --------------------------------------------------------------------------------------- */
@@ -134,10 +134,10 @@ const youtube = {
 	],
 };
 
-//1.
+//1. Print the name of the third marker (index 2).
 console.log(googleMaps.markers[2].name); // Grand Hyatt
 
-//2.
+//2. Find the highest longitude value among all markers.
 let HigherLong = 0;
 googleMaps.markers.forEach((marker) => {
 	if (marker.location.long > HigherLong) {
@@ -146,26 +146,26 @@ googleMaps.markers.forEach((marker) => {
 });
 console.log(HigherLong); // 55.3273
 
-//3
+//3 Print the supplier of the product whose ID includes "9234".
 database.forEach((product) => {
 	if (product._id.$oid.includes("9234")) {
 		console.log(product.supplier); // Keebler-Hilpert
 	}
 });
 
-//4.
+//4. Print IDs of products with quantity greater than 250.
 database.forEach((product) => {
 	if (product.quantity > 250) {
 		console.log(product._id.$oid); // 5968dd23fc13ae04d94561 5968dd23fc13ae04d92342
 	}
 });
 
-//5.
+//5. Print total YouTube results and results per page.
 console.log(
 	`Hi ha un total de ${youtube.pageInfo.totalResults} resultats i se'n mostren ${youtube.pageInfo.resultsPerPage} per pàgina`
 ); // Hi ha un total de 4249 resultats i se'n mostren 5 per pàgina
 
-//6.
+//6. Find the first YouTube item that is a video and print its videoId.
 const firstVideo = youtube.items.find(
 	(item) => item.id.kind === "youtube#video"
 );
@@ -233,14 +233,18 @@ function ajaxWeather() {
 function fetchPokemon() {
 	const pokeapiEndpoint =
 		"https://pokeapi.co/api/v2/pokemon?offset=500&limit=50";
+	// Call the API using Fetch
 	fetch(pokeapiEndpoint)
 		.then((response) => {
+			// Check if the HTTP response is OK (status code 200–299)
 			if (!response.ok) {
 				throw new Error(`HTTP error: ${response.status}`);
 			}
+			// Parse the response body as JSON
 			return response.json();
 		})
 		.then((json) => {
+			// Use reduce() to collect all Pokémon names that include the letter "p"
 			const filteredNames = json.results.reduce((pNames, pokemon) => {
 				if (pokemon.name.includes("p")) {
 					pNames.push(pokemon.name);
@@ -263,18 +267,24 @@ utilitzar .reduce, aixi que he intentat fer-ho així. */
 
 async function fetchDataFromFile(localFile) {
 	try {
-		fetch(localFile);
+		// Variable to accumulate the total price
 		let finalprice = 0;
+		// Fetch the local JSON file
 		const response = await fetch(localFile);
 		if (!response.ok) {
 			throw new Error(`HTTP error: ${response.status}`);
 		}
+		// Parse the response body as JSON
 		const data = await response.json();
 
+		// Iterate through each book and add its price to the total
 		for (let book of data) {
 			finalprice += book.price * 2;
 		}
+		// Print the final price rounded to two decimal places
 		console.log(Number(finalprice.toFixed(2)));
+
+		// Catch and log any errors that occur during the fetch or processing
 	} catch (error) {
 		console.error("Error al fer la petició:", error);
 		return;
@@ -287,6 +297,7 @@ async function fetchDataFromFile(localFile) {
 //1.
 async function fetchCors() {
 	try {
+		// This will likely fail due to CORS policy
 		const res = await fetch("http://itsthisforthat.com/api.php?json");
 		const data = await res.json();
 		console.log("Dades rebudes:", data);
@@ -295,11 +306,13 @@ async function fetchCors() {
 	}
 
 	//2.
+	// Using a public CORS proxy to bypass CORS restrictions
 	try {
 		const proxy = "https://corsproxy.io/?url=";
 		const url = "http://itsthisforthat.com/api.php?json";
-
+		// Fetching the data via the proxy
 		const res = await fetch(proxy + url);
+		// Getting the response text
 		const data = await res.text();
 		console.log("Dades rebudes via proxy:", data);
 	} catch (err) {
