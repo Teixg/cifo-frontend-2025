@@ -37,7 +37,20 @@ $(document).ready(function () {
 
 /* Task 4 --------------------------------------------------------------------------------------- */
 
-// There is no initial provided code.
+$(document).ready(function () {
+	$.ajax({
+		url: "https://pokeapi.co/api/v2/pokemon/charmeleon",
+		method: "GET",
+		success: function (data) {
+			$.each(data.abilities, function (i, abilitat) {
+				$(".task4").append("<br> - " + abilitat.ability.name);
+			});
+		},
+		error: function () {
+			$(".task4").append("<br>> Error en carregar les dades!");
+		},
+	});
+});
 
 /* Task 4 solution ------------------------------------------------------------------------------ */
 
