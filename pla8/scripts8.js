@@ -18,7 +18,20 @@ $(document).ready(function () {
 
 /* Task 3 --------------------------------------------------------------------------------------- */
 
-// There is no initial provided code.
+$(document).ready(function () {
+	const btnColors = ["#9009", "#0909"];
+	const bgColors = ["#9009", "#fff"];
+
+	$("#task3").hover(function () {
+		const randomColor = btnColors[Math.floor(Math.random() * btnColors.length)];
+		$(this).css("background-color", randomColor);
+	});
+
+	$("#task3").click(function () {
+		const randomBg = bgColors[Math.floor(Math.random() * bgColors.length)];
+		$("body").css("background-color", randomBg);
+	});
+});
 
 /* Task 3 solution ------------------------------------------------------------------------------ */
 
