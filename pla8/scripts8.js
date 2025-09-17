@@ -56,7 +56,15 @@ $(document).ready(function () {
 
 /* Task 5 --------------------------------------------------------------------------------------- */
 
-// There is no initial provided code.
+$(document).ready(function () {
+	$("#slider").slider({
+		min: 0,
+		max: 42,
+		slide: function (event, ui) {
+			console.log("Valor actual: " + ui.value);
+		},
+	});
+});
 
 /* Task 5 solution ------------------------------------------------------------------------------ */
 
