@@ -1,0 +1,129 @@
+body {
+	margin: 0;
+	color: #fff;
+	background-color: #000;
+	padding: 0;
+	height: 100%;
+}
+/* Canvas de fondo */
+#bgCanvas {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	background: #0a0a0a; /* fallback oscuro */
+}
+
+/*Header styles*/
+header {
+	display: flex;
+	align-items: center;
+	text-align: center;
+	justify-content: center;
+	margin-bottom: 2rem;
+}
+.logo {
+	width: 6rem;
+	height: auto;
+}
+/*Section callToAction*/
+.callToAction {
+	text-align: center;
+	margin: 2rem;
+}
+/*Section inputId*/
+.inputId {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#steamId {
+	max-width: 40rem;
+	width: 100%;
+}
+
+.inputContainer {
+	position: relative;
+	width: 300px;
+}
+.form-control {
+	width: 100%;
+	border: 1px solid #ccc;
+	border-radius: 100px;
+	padding: 10px 100px 10px 20px;
+	line-height: 1;
+	box-sizing: border-box;
+	outline: none;
+}
+
+.fetchBtn {
+	position: absolute;
+	right: 3px;
+	top: 3px;
+	bottom: 3px;
+	border: 0;
+	background: #471e63;
+	color: #fff;
+	outline: none;
+	margin: 0;
+	padding: 0 1rem 0 1rem;
+	border-radius: 100%;
+	z-index: 2;
+}
+
+.fetchBtn:hover {
+	background: #a581bd;
+}
+
+/*Section accordionSection*/
+.accordionSection {
+	margin: 2rem;
+}
+
+.accordion,
+.accordion-item,
+.accordion-button,
+.accordion-body {
+	background-color: transparent !important;
+	border: none;
+	color: #fff;
+}
+
+.accordion-button::after {
+	filter: invert(1);
+}
+
+.accordion-button:not(.collapsed) {
+	color: #979797;
+	background-color: transparent;
+}
+
+footer {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	margin-top: 10rem;
+	font-size: 0.8rem;
+	color: #ccc;
+}
+
+/* icons style */
+.bi-trophy-fill {
+	color: orange;
+	margin-right: 1rem;
+}
+
+.bi-clock-fill {
+	color: rgba(220, 105, 255);
+	margin-right: 1rem;
+}
+
+.bi-graph-up {
+	color: rgba(46, 161, 255);
+	margin-right: 1rem;
+}
