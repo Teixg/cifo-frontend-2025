@@ -11,8 +11,8 @@ function testCdn() {
 
 /* Task 2 --------------------------------------------------------------------------------------- */
 $(document).ready(function () {
-	$("#task21 li:not(.killed)").addClass("killed");
-	$("#task22 li").removeClass("killed");
+	$("#task21 li:not(.killed)").addClass("killed"); // mark the one not killed as killed
+	$("#task22 li").removeClass("killed"); // remove 'killed' class from all in second list
 });
 /* Task 2 solution ------------------------------------------------------------------------------ */
 
@@ -24,12 +24,12 @@ $(document).ready(function () {
 
 	$("#task3").hover(function () {
 		const randomColor = btnColors[Math.floor(Math.random() * btnColors.length)];
-		$(this).css("background-color", randomColor);
+		$(this).css("background-color", randomColor); // change button color
 	});
 
 	$("#task3").click(function () {
 		const randomBg = bgColors[Math.floor(Math.random() * bgColors.length)];
-		$("body").css("background-color", randomBg);
+		$("body").css("background-color", randomBg); // change page background color
 	});
 });
 
@@ -43,11 +43,11 @@ $(document).ready(function () {
 		method: "GET",
 		success: function (data) {
 			$.each(data.abilities, function (i, abilitat) {
-				$(".task4").append("<br> - " + abilitat.ability.name);
+				$(".task4").append("<br> - " + abilitat.ability.name); // display abilities
 			});
 		},
 		error: function () {
-			$(".task4").append("<br>> Error en carregar les dades!");
+			$(".task4").append("<br>> Error en carregar les dades!"); // show error
 		},
 	});
 });
