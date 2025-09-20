@@ -1,7 +1,48 @@
+/* Header */
+header {
+	display: flex;
+	align-items: left;
+	text-align: left;
+	justify-content: space-around;
+	margin-bottom: 2rem;
+}
+.logo-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.logo {
+	width: 4rem;
+	height: auto;
+}
+
+#userInfo {
+	text-align: right;
+	margin-bottom: 2rem;
+	margin-top: 2rem;
+	margin-right: 1rem;
+	gap: 1rem;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	text-size-adjust: 60%;
+}
+#userInfo p {
+	padding: 0;
+	margin: 0;
+}
+#userInfo img {
+	width: 50px;
+	height: 50px;
+	border-radius: 10%;
+	vertical-align: middle;
+}
+
 /* Gallery grid styles */
 .games-grid {
 	display: grid;
-	gap: 20px;
+	gap: 1rem;
 	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 }
 
@@ -12,6 +53,7 @@
 	padding: 10px;
 	text-align: center;
 	transition: transform 0.2s, box-shadow 0.2s;
+	font-size: auto;
 }
 
 .game-card img {
