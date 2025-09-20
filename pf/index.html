@@ -5,17 +5,21 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Playlitics</title>
 		<link
+			rel="icon"
+			href="./assets/favicon.ico"
+			type="image/x-icon"
+			sizes="16x16"
+		/>
+		<link
 			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
 			rel="stylesheet"
 			integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
 			crossorigin="anonymous"
 		/>
 		<link rel="stylesheet" href=".//styles/styles.css" />
-		<link rel="icon" href="" type="image/x-icon" />
-		<script src="./main.js" defer></script>
+		<script src="./main.js" type="module" defer></script>
 	</head>
 	<body>
-		<canvas id="bgCanvas"></canvas>
 		<header>
 			<img class="logo" src="./assets/logo.png" alt="Playlitics Logo" />
 			<h1>Playlitics</h1>
@@ -40,11 +44,12 @@
 							width="20"
 							height="20"
 							fill="currentColor"
-							class="bi bi-play-fill"
+							class="bi bi-power"
 							viewBox="0 0 16 16"
 						>
+							<path d="M7.5 1v7h1V1z" />
 							<path
-								d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393"
+								d="M3 8.812a5 5 0 0 1 2.578-4.375l-.485-.874A6 6 0 1 0 11 3.616l-.501.865A5 5 0 1 1 3 8.812"
 							/>
 						</svg>
 					</button>
@@ -63,6 +68,21 @@
 							aria-expanded="true"
 							aria-controls="collapseOne"
 						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="16"
+								height="16"
+								fill="currentColor"
+								class="bi bi-joystick"
+								viewBox="0 0 16 16"
+							>
+								<path
+									d="M10 2a2 2 0 0 1-1.5 1.937v5.087c.863.083 1.5.377 1.5.726 0 .414-.895.75-2 .75s-2-.336-2-.75c0-.35.637-.643 1.5-.726V3.937A2 2 0 1 1 10 2"
+								/>
+								<path
+									d="M0 9.665v1.717a1 1 0 0 0 .553.894l6.553 3.277a2 2 0 0 0 1.788 0l6.553-3.277a1 1 0 0 0 .553-.894V9.665c0-.1-.06-.19-.152-.23L9.5 6.715v.993l5.227 2.178a.125.125 0 0 1 .001.23l-5.94 2.546a2 2 0 0 1-1.576 0l-5.94-2.546a.125.125 0 0 1 .001-.23L6.5 7.708l-.013-.988L.152 9.435a.25.25 0 0 0-.152.23"
+								/>
+							</svg>
 							¿Qué información voy a ver?
 						</button>
 					</h2>
@@ -138,6 +158,21 @@
 							aria-expanded="false"
 							aria-controls="collapseTwo"
 						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="16"
+								height="16"
+								fill="currentColor"
+								class="bi bi-question-circle"
+								viewBox="0 0 16 16"
+							>
+								<path
+									d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"
+								/>
+								<path
+									d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94"
+								/>
+							</svg>
 							¿Por qué no aparecen mis estadísticas?
 						</button>
 					</h2>
@@ -161,6 +196,21 @@
 								aria-expanded="false"
 								aria-controls="collapseThree"
 							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									fill="currentColor"
+									class="bi bi-shield-check"
+									viewBox="0 0 16 16"
+								>
+									<path
+										d="M5.338 1.59a61 61 0 0 0-2.837.856.48.48 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.7 10.7 0 0 0 2.287 2.233c.346.244.652.42.893.533q.18.085.293.118a1 1 0 0 0 .101.025 1 1 0 0 0 .1-.025q.114-.034.294-.118c.24-.113.547-.29.893-.533a10.7 10.7 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.8 11.8 0 0 1-2.517 2.453 7 7 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7 7 0 0 1-1.048-.625 11.8 11.8 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 63 63 0 0 1 5.072.56"
+									/>
+									<path
+										d="M10.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0"
+									/>
+								</svg>
 								¿Es seguro introducir mi Steam ID aquí?
 							</button>
 						</h2>

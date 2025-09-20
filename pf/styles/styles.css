@@ -1,19 +1,40 @@
+:root {
+	--colorw-50: #f0f3ff;
+	--colorw-100: #e1e7fe;
+	--colorw-200: #d1dcfd;
+	--colorw-300: #c1d0fd;
+	--colorw-400: #b1c5fc;
+	--colorw-500: #a0b9fb;
+	--colorw-600: #8eaefa;
+	--colorw-700: #7ba4f9;
+	--colorw-800: #6699f8;
+	--colorw-900: #4d8ef6;
+	--colorw-950: #2784f5;
+	--color-50: #2784f5;
+	--color-100: #2977dc;
+	--color-200: #296bc4;
+	--color-300: #285eac;
+	--color-400: #275295;
+	--color-500: #25477e;
+	--color-600: #223b68;
+	--color-700: #1e3053;
+	--color-800: #1a263f;
+	--color-900: #151b2b;
+	--color-950: #0e1119;
+}
 body {
 	margin: 0;
 	color: #fff;
-	background-color: #000;
+	background: #090979;
+	background: radial-gradient(
+		circle,
+		var(--color-600) 23%,
+		var(--color-900) 79%,
+		var(--color-950) 100%,
+		var(--color-100) 0%
+	);
 	padding: 0;
 	height: 100%;
-}
-/* Canvas de fondo */
-#bgCanvas {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	z-index: -1;
-	background: #0a0a0a; /* fallback oscuro */
 }
 
 /*Header styles*/
@@ -28,11 +49,13 @@ header {
 	width: 6rem;
 	height: auto;
 }
+
 /*Section callToAction*/
 .callToAction {
 	text-align: center;
 	margin: 2rem;
 }
+
 /*Section inputId*/
 .inputId {
 	display: flex;
@@ -52,7 +75,7 @@ header {
 .form-control {
 	width: 100%;
 	border: 1px solid #ccc;
-	border-radius: 100px;
+	border-radius: 1rem;
 	padding: 10px 100px 10px 20px;
 	line-height: 1;
 	box-sizing: border-box;
@@ -65,39 +88,62 @@ header {
 	top: 3px;
 	bottom: 3px;
 	border: 0;
-	background: #471e63;
+	background: var(--color-400);
 	color: #fff;
 	outline: none;
 	margin: 0;
 	padding: 0 1rem 0 1rem;
-	border-radius: 100%;
+	border-radius: 30%;
+	border-style: solid;
+	border-width: 1px;
+	border-color: var(--color-200);
 	z-index: 2;
 }
 
 .fetchBtn:hover {
-	background: #a581bd;
+	background: var(--color-100);
+	border-color: var(--color-50);
+}
+.fetchBtn svg {
+	width: 1.5rem;
+	height: 1.5rem;
+	fill: #fff;
+}
+.fetchBtn:hover svg {
+	fill: #fff;
 }
 
 /*Section accordionSection*/
 .accordionSection {
 	margin: 2rem;
 }
-
+.accordion-header {
+	text-align: center;
+	margin-bottom: 1rem;
+	font-size: 1.5rem;
+	border: solid 0.2rem var(--colorw-300);
+	border-radius: 1rem;
+}
 .accordion,
 .accordion-item,
 .accordion-button,
 .accordion-body {
 	background-color: transparent !important;
 	border: none;
-	color: #fff;
+	color: var(--colorw-300);
 }
-
+.accordion svg {
+	padding-right: 0.4rem;
+	margin-top: 0.2rem;
+	height: 1.5rem;
+	width: 1.5rem;
+}
 .accordion-button::after {
 	filter: invert(1);
 }
 
 .accordion-button:not(.collapsed) {
-	color: #979797;
+	color: var(--color-50);
 	background-color: transparent;
 }
 
