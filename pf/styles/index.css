@@ -1,0 +1,99 @@
+/*Section callToAction*/
+.callToAction {
+	text-align: center;
+	margin: 2rem;
+}
+
+/*Section inputId*/
+.inputId {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#steamId {
+	max-width: 40rem;
+	width: 100%;
+}
+
+.inputContainer {
+	position: relative;
+	width: 300px;
+}
+.form-control {
+	width: 100%;
+	border: 1px solid #ccc;
+	border-radius: 1rem;
+	padding: 10px 100px 10px 20px;
+	line-height: 1;
+	box-sizing: border-box;
+	outline: none;
+}
+
+.fetchBtn {
+	position: absolute;
+	right: 3px;
+	top: 3px;
+	bottom: 3px;
+	border: 0;
+	background: var(--color-400);
+	color: #fff;
+	outline: none;
+	margin: 0;
+	padding: 0 1rem 0 1rem;
+	border-radius: 30%;
+	border-style: solid;
+	border-width: 1px;
+	border-color: var(--color-200);
+	z-index: 2;
+}
+
+.fetchBtn:hover {
+	background: var(--color-100);
+	border-color: var(--color-50);
+}
+.fetchBtn svg {
+	width: 1.5rem;
+	height: 1.5rem;
+	fill: #fff;
+}
+.fetchBtn:hover svg {
+	fill: #fff;
+}
+
+/*Section accordionSection*/
+.accordionSection {
+	margin: 2rem;
+}
+.accordion-header {
+	user-select: none;
+	text-align: center;
+	margin-bottom: 1rem;
+	font-size: 1.5rem;
+	border: solid 0.2rem var(--colorw-300);
+	border-radius: 1rem;
+}
+.accordion,
+.accordion-item,
+.accordion-button,
+.accordion-body {
+	background-color: transparent !important;
+	border: none;
+	color: var(--colorw-300);
+}
+.accordion svg {
+	padding-right: 0.4rem;
+	margin-top: 0.2rem;
+	height: 1.5rem;
+	width: 1.5rem;
+}
+.accordion-button::after {
+	filter: invert(1);
+}
+
+.accordion-button:not(.collapsed) {
+	color: var(--color-50);
+	background-color: transparent;
+	box-shadow: none;
+	user-select: none;
+}
