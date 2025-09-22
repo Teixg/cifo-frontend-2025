@@ -8,9 +8,7 @@ bt1.addEventListener("click", async () => {
 	const userData = await getUserData(steamId);
 	steamId = userData.steamid; // Fallback to input if not found
 	if (userData) {
-		window.location.href = `gallery.html?steamid=${encodeURIComponent(
-			steamId
-		)}`;
+		window.location.href = `gallery.html?steamid=${steamId}`;
 		console.log("Redirecting to gallery with SteamID:", steamId);
 	} else {
 		document.getElementById("response").innerText = "No player data found.";
