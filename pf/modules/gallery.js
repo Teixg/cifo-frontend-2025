@@ -56,13 +56,20 @@ async function displayGames() {
  	`;
 
 		games.forEach((game) => {
-			gamesGrid += `
-      <div class="game-card">
+			gamesGrid +=
+				`
+      <div class="game-card ` +
+				(game.ach_onwed === game.ach_total && game.ach_total > 0
+					? "completed"
+					: "") +
+				`">
         <img src="${game.img}" alt="${game.title} header">
-        <h3>${game.title}</h3>
+        <p>${game.title}</p>
+		<div class="stats">
         <p>${iconH}: ${Math.round(game.playtime / 60)}h</p>
         <p>${iconA}: ${game.ach_onwed}/${game.ach_total}</p>
       </div>
+	  </div>
     `;
 		});
 
@@ -72,6 +79,21 @@ async function displayGames() {
 		document.getElementById("gallery").innerHTML += "<p>No games found.</p>";
 	}
 }
+
+document.addEventListener("click", function (e) {
+	const card = e.target.closest(".game-card");
+	if (card) {
+		const img = card.querySelector("img");
+		if (img) {
+			const src = img.getAttribute("src");
+			const match = src.match(/\/apps\/(\d+)\//);
+			if (match) {
+				const gameId = match[1];
+				window.location.href = `game.html?gameid=${gameId}&steamid=${steamId}`;
+			}
+		}
+	}
+});
 
 async function getUserData(steamId) {
 	try {
