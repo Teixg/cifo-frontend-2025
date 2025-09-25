@@ -1,0 +1,19 @@
+li {
+	margin: 5px 0;
+	list-style: none;
+	display: flex;
+}
+
+li img {
+	width: 3.5rem;
+	height: 3.5rem;
+	margin-right: 10px;
+}
+
+li p {
+	margin: 0;
+	font-size: 0.7rem;
+}
+li strong {
+	font-size: 0.8rem;
+}

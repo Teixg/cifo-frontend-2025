@@ -29,7 +29,7 @@ async function fetchAchievements(appId) {
 			data.game.availableGameStats &&
 			data.game.availableGameStats.achievements
 		) {
-			console.log("Achievements:", data.game.availableGameStats.achievements);
+			console.log("Achievements:", data);
 			return data.game.availableGameStats.achievements;
 		}
 		return [];
@@ -97,9 +97,9 @@ function displayGameDetails(details, achievements) {
 										isAchievementUnlocked(ach, details)
 											? ach.icon
 											: ach.icongray
-									}" alt="${ach.displayName} icon" /> <strong>${
+									}" alt="${ach.displayName} icon" /> <p><strong>${
 										ach.displayName
-									}</strong>: ${ach.description}</li>`
+									}</strong>: ${ach.description}<p></li>`
 							)
 							.join("")}</ul>`;
 }

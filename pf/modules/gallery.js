@@ -28,8 +28,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 		return;
 	}
 
-	console.log("SteamID from URL:", steamId);
-
 	// Mostrar datos del usuario
 	const userData = await getUserData(steamId);
 	if (userData) {
@@ -111,6 +109,7 @@ async function getGames(steamId) {
 		if (!gamesList) {
 			const response = await fetch(`${gamesUrl}&steamid=${steamId}`);
 			const data = await response.json();
+			console.log(data);
 			const rawGames = data.response.games || [];
 			gamesList = rawGames;
 		}
@@ -122,7 +121,6 @@ async function getGames(steamId) {
 		const games = await Promise.all(
 			gamesPagination.map(async (g) => {
 				const ach = await GetPlayerAchievements(steamId, g.appid);
-				console.log(ach);
 				return new Game(
 					g.appid,
 					g.name,
