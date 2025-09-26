@@ -178,7 +178,23 @@
 			higher-order functions i les first-order functions.
 		</p>
 
-		<p>Aquí la vostra resposta...</p>
+		<p>
+			First-order functions són funcions normals que reben valors i retornen
+			valors, sense rebre ni retornar altres funcions. Per exemple, una funció
+			suma rep dos números i retorna un número, sense treballar amb altres
+			funcions. Higher-order functions són funcions que poden rebre una altra
+			funció com a argument o retornar una funció. Això les fa molt poderoses i
+			flexibles. Un exemple amb una funció com a argument seria una funció
+			aplicar que rep una funció i un valor i retorna el resultat d’executar
+			aquesta funció amb el valor. Un exemple amb una funció retornada seria una
+			funció crearMultiplicador que rep un factor i retorna una nova funció que
+			multiplica per aquest factor. En resum, les first-order functions
+			treballen amb valors normals, mentre que les higher-order functions
+			treballen amb funcions, rebent-les i/o retornant-les. Un exemple habitual
+			de higher-order functions a JavaScript són mètodes com map, filter o
+			reduce, que reben una funció com a argument per aplicar-la a cada element
+			d’un array.
+		</p>
 
 		<!-- Task 5 -------------------------------------------------------------------------------- -->
 		<h2>5. TypeScript</h2>
@@ -188,7 +204,14 @@
 			vostres paraules.
 		</p>
 
-		<p>Aquí la vostra resposta...</p>
+		<p>
+			Tipatge estàtic: El tipus de cada variable es defineix abans que el
+			programa s'executi, generalment en temps de compilació. Llenguatges com
+			Java i C++ utilitzen tipatge estàtic. <br /><br />
+			Tipatge dinàmic: El tipus de les variables es determina en temps
+			d'execució, és a dir, mentre el programa s'està executant. Llenguatges com
+			JavaScript i Python utilitzen tipatge dinàmic.
+		</p>
 
 		<p class="question">
 			...expliqueu quins són els principals avantatges de fer servir un
@@ -196,13 +219,53 @@
 			tipat dinàmic com JavaScript.
 		</p>
 
-		<p>Aquí la vostra resposta...</p>
+		<p>
+			Fer servir un llenguatge de tipat estàtic com TypeScript té diversos
+			avantatges sobre un llenguatge de tipat dinàmic com JavaScript. El
+			principal és que TypeScript comprova els tipus abans d’executar el codi
+			(en temps de compilació), cosa que permet detectar errors abans que el
+			programa arribi a funcionar. Això redueix molt els bugs i millora la
+			seguretat del codi. A més, TypeScript aporta més claritat i
+			mantenibilitat: els tipus actuen com una documentació interna que ajuda a
+			entendre què espera cada funció i variable, especialment en projectes
+			grans. També millora la productivitat del desenvolupador, perquè ofereix
+			autocompletat intel·ligent, detecció d’errors immediata i eines de
+			refactorització més segures. Finalment, TypeScript facilita treballar en
+			equips grans i mantenir projectes a llarg termini, ja que la seva
+			estructura tipada evita confusions i problemes quan el codi creix i
+			canvia.
+		</p>
 
 		<p class="question">
 			...explicar com funciona a grans trets el procediment per escriure codi
 			TypeScript en un projecte web.
 		</p>
 
-		<p>Aquí la vostra resposta...</p>
+		<p>
+			A grans trets, el procediment per fer servir TypeScript en un projecte web
+			és així:
+		</p>
+		<ol>
+			<li>
+				Instal·lar TypeScript al projecte (npm install typescript) o
+				utilitzar-lo globalment.
+			</li>
+			<li>Escriure el codi en fitxers .ts amb la sintaxi TypeScript.</li>
+			<li>
+				Compilar aquests fitxers amb el compilador (tsc) per generar fitxers .js
+				equivalents. Aquest pas converteix TypeScript a JavaScript compatible
+				amb navegadors.
+			</li>
+			<li>Enllaçar al teu document HTML el fitxer .js generat, no el .ts.</li>
+			<li>
+				I pots configurar un tsconfig.json per definir opcions de compilació,
+				com la versió de JavaScript de sortida o directoris d’entrada i sortida.
+			</li>
+		</ol>
+		<p>
+			Resumint: no pots executar directament .ts en un navegador. Cal transpilar
+			TypeScript a JavaScript abans. Això és una diferència clau respecte a
+			JavaScript, que sí pot executar-se directament.
+		</p>
 	</body>
 </html>

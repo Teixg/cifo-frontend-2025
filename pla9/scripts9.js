@@ -409,17 +409,26 @@ console.log("Task 4 ---------------------------------------");
 
 /* Task 4 solution ------------------------------------------------------------------------------ */
 
-const numberOfFriends = null; // replace null with your expression
+const numberOfFriends = people.map((person) => person.friends.length); // replace null with your expression
 console.log(numberOfFriends);
 
-const emailDomains = null; // replace null with your expression
+const emailDomains = people.map((person) => person.email.split("@")[1]); // replace null with your expression
 console.log(emailDomains);
 
-const favoriteFruits = null; // replace null with your expression
+const favoriteFruits = [
+	...new Set(people.map((person) => person.favoriteFruit)),
+].sort(); // replace null with your expression
 console.log(favoriteFruits);
 
-const averageAge = null; // replace null with your expression
+const averageAge =
+	people.map((person) => person.age).reduce((sum, age) => sum + age, 0) /
+	people.length; // replace null with your expression
 console.log(averageAge);
 
-const richPeople = null; // replace null with your expression
+const richPeople =
+	people
+		.map((person) => parseFloat(person.balance.replace(/[$,]/g, "")))
+		.reduce((sum, balance) => sum + balance, 0) /
+		people.length >
+	2500; // replace null with your expression
 console.log(richPeople);
