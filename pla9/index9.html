@@ -127,14 +127,48 @@
 			havíem utilitzat fins ara.
 		</p>
 
-		<p>Aquí la vostra resposta...</p>
+		<p>
+			Fins ara, quan incloíem un fitxer JavaScript dins un document HTML,
+			normalment utilitzàvem l’atribut defer a l’etiqueta <em>script</em>.
+			Aquest atribut indica que el codi JavaScript s’ha de carregar en paral·lel
+			a l’HTML però que només s’executarà un cop el document estigui totalment
+			processat. D’aquesta manera, evitem problemes en què el codi JavaScript
+			intenti accedir a elements del DOM que encara no existeixen. En canvi, en
+			el codi actual veiem que s’ha afegit l’atribut type="module" a l’etiqueta
+			<em>script</em>. Aquest atribut indica al navegador que el fitxer
+			JavaScript és un mòdul. Els mòduls introdueixen dues característiques
+			importants: <br />Permeten importar i exportar funcionalitats (funcions,
+			classes, variables, etc.) entre fitxers, cosa que facilita molt
+			l’organització del codi.<br />
+			Els scripts amb type="module" s’executen en mode estricte de manera
+			automàtica i, a més, també es comporten de manera similar a defer:
+			s’executen només quan el document HTML ja està processat.
+			<br /><br />En resum, la diferència principal és que abans només indicàvem
+			al navegador que ajornés l’execució del codi (defer), mentre que ara, amb
+			type="module", a més d’això, li estem dient que el nostre JavaScript està
+			estructurat en mòduls i que pot fer servir el sistema d’import/export per
+			dividir i reutilitzar millor el codi.
+		</p>
 
 		<p class="question">
 			Expliqueu de manera clara quina sintaxi cal seguir per definir una classe
 			i quina sintaxi s'utilitza després per crear un objecte d'aquesta classe.
 		</p>
 
-		<p>Aquí la vostra resposta...</p>
+		<p>
+			Una classe en JavaScript és com un plànol o plantilla per crear objectes.
+			Es defineix amb la paraula clau class seguida del nom de la classe, i dins
+			hi ha un constructor per inicialitzar les propietats i possibles mètodes
+			que tindran els objectes creats. Per exemple:
+			<em
+				>class Persona { constructor(nom, edat) { this.nom = nom; this.edat =
+				edat; }} </em
+			>. Per crear un objecte a partir d’aquesta classe s’utilitza new seguit
+			del nom de la classe amb els valors corresponents, com const persona1 =
+			new Persona("Teix", 32). <br />La diferència és que la classe és només la
+			definició (el plànol), mentre que l’objecte és una instància real amb
+			dades concretes basades en aquesta classe.
+		</p>
 
 		<!-- Task 4 -------------------------------------------------------------------------------- -->
 		<h2>4. Mapatge d'arrays</h2>

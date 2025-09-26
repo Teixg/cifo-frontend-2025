@@ -94,6 +94,39 @@ console.log("42 + 3 is " + addThree(42));
 
 /* Task 3 solution ------------------------------------------------------------------------------ */
 
+import Laptop, {
+	esParell,
+	actualDate,
+	calculateDiscount,
+} from "./modules/stuff.js";
+
+console.log("=== EXAMPLES OF USING THE LAPTOP CLASS ===");
+
+// Create Laptop objects
+const laptop1 = new Laptop("Dell", "XPS 13", 16, "Intel i7", 1500);
+const laptop2 = new Laptop("Apple", "MacBook Pro", 32, "M2", 2500);
+const laptop3 = new Laptop("HP", "Spectre x360", 8, "Intel i5", 1200);
+
+// Show created objects
+console.log(laptop1);
+console.log(laptop2);
+console.log(laptop3);
+
+// Change properties using methods
+laptop1.changeRam(32);
+laptop2.calculateIVA(2300);
+laptop3.changeRam(16);
+
+// Show after changes
+console.log("After changes:");
+console.log(laptop1);
+console.log(laptop2);
+console.log(laptop3);
+
+calculateDiscount(1500, 10);
+console.log("És parell?", esParell(27));
+console.log("Data actual:", actualDate());
+
 /* Task 4 provided code (do NOT modify anything) ------------------------------------------------ */
 
 const people = [
