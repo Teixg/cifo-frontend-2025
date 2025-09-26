@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link href="styles9.css" rel="stylesheet" type="text/css" />
+		<script src="scripts9.js" type="module"></script>
+		<title>PLA 9 - Teix Garcia</title>
+	</head>
+	<body>
+		<header>
+			<h1>PLA 9: JavaScript avançat i fonaments de TypeScript</h1>
+		</header>
+
+		<!-- Task 1 ---------------------------------------------------------------------------- -->
+		<h2>1. Spread, rest i destructuring objects</h2>
+
+		<p class="question">
+			Expliqueu de manera entenedora per què es produeix aquest error...
+		</p>
+
+		<p>
+			El problema surt perquè la funció chooseBetween() espera dos objectes,
+			però a la crida se li passa l’array sencer. Això fa que un paràmetre sigui
+			un array i l’altre sigui undefined. Quan intenta accedir a .name, unes
+			vegades surt undefined i altres vegades dóna error, depenent de quin
+			paràmetre agafi el Math.random(). La solució és passar-li dos objectes en
+			lloc de l’array.
+		</p>
+
+		<p class="question">
+			Quin mecanisme s'està aplicant a les dues primeres línies?
+		</p>
+
+		<p>
+			fan servir destructuring. El primer cas és array destructuring: assigna
+			cada element de l’array artists a les variables a1, a2 i a3. El segon cas
+			és object destructuring: extreu les propietats name i art de l’objecte a2
+			i les guarda en variables amb aquests noms.
+		</p>
+
+		<!-- Task 2 ---------------------------------------------------------------------------- -->
+		<h2>2. Emmagatzematge local (local storage)</h2>
+		<div class="buttons">
+			<a href="#" class="btn">#800</a>
+			<a href="#" class="btn">#080</a>
+			<a href="#" class="btn">#008</a>
+			<a href="#" class="btn">#880</a>
+			<a href="#" class="btn">#808</a>
+			<a href="#" class="btn">#088</a>
+			<a href="#" class="btn">#888</a>
+		</div>
+
+		<p class="question">
+			Expliqueu de manera entenedora quins són els principals avantatges que
+			ofereix l'emmagatzematge local d'informació.
+		</p>
+
+		<p>Aquí la vostra resposta...</p>
+
+		<p class="question">
+			Expliqueu de manera molt detallada què fa el codi de cada una d'aquestes
+			parts.
+		</p>
+
+		<p>Aquí la vostra resposta...</p>
+
+		<!-- Task 3 -------------------------------------------------------------------------------- -->
+		<h2>3. Classes i mòduls</h2>
+
+		<p class="question">
+			Expliqueu quina és aquesta part i en què es diferencia de la sintaxi que
+			havíem utilitzat fins ara.
+		</p>
+
+		<p>Aquí la vostra resposta...</p>
+
+		<p class="question">
+			Expliqueu de manera clara quina sintaxi cal seguir per definir una classe
+			i quina sintaxi s'utilitza després per crear un objecte d'aquesta classe.
+		</p>
+
+		<p>Aquí la vostra resposta...</p>
+
+		<!-- Task 4 -------------------------------------------------------------------------------- -->
+		<h2>4. Mapatge d'arrays</h2>
+
+		<p class="question">
+			Expliqueu de manera entenedora quina és la diferència entre les anomenades
+			higher-order functions i les first-order functions.
+		</p>
+
+		<p>Aquí la vostra resposta...</p>
+
+		<!-- Task 5 -------------------------------------------------------------------------------- -->
+		<h2>5. TypeScript</h2>
+
+		<p class="question">
+			...expliqueu la diferència entre aquests dos tipus de llenguatges amb les
+			vostres paraules.
+		</p>
+
+		<p>Aquí la vostra resposta...</p>
+
+		<p class="question">
+			...expliqueu quins són els principals avantatges de fer servir un
+			llenguatge de tipat estàtic com TypeScript per sobre d'un llenguatge de
+			tipat dinàmic com JavaScript.
+		</p>
+
+		<p>Aquí la vostra resposta...</p>
+
+		<p class="question">
+			...explicar com funciona a grans trets el procediment per escriure codi
+			TypeScript en un projecte web.
+		</p>
+
+		<p>Aquí la vostra resposta...</p>
+	</body>
+</html>
