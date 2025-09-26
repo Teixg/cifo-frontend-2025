@@ -58,11 +58,14 @@ console.log("Setup done");
 /* Task 2 solution ------------------------------------------------------------------------------ */
 
 function saveBackgroundColor() {
-	// 🤔 I should save something somewhere...
+	const currentColor = document.body.style.background;
+	localStorage.setItem("backgroundColor", currentColor);
 }
 
-// 🤔 Oh wait... and I should do something sometime with that something saved somewhere...
-
+const savedColor = localStorage.getItem("backgroundColor");
+if (savedColor) {
+	document.body.style.background = savedColor;
+}
 /* Task 3 provided code (do NOT modify anything) ------------------------------------------------ */
 
 console.log("Task 3 ---------------------------------------");

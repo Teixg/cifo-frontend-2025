@@ -57,14 +57,67 @@
 			ofereix l'emmagatzematge local d'informació.
 		</p>
 
-		<p>Aquí la vostra resposta...</p>
+		<p>
+			Els avantatges del client-side storage o emmagatzematge local al navegador
+			són que permet guardar informació directament al navegador de l’usuari
+			sense haver d’enviar-la contínuament al servidor, és ràpid perquè no cal
+			fer peticions a internet per recuperar dades simples, es conserva encara
+			que tanquis la pestanya o reiniciïs el navegador, redueix la càrrega del
+			servidor i estalvia ample de banda i funciona encara que no hi hagi
+			connexió a internet. Alguns exemples d’ús serien guardar el nivell de
+			volum i la velocitat d’un reproductor de vídeo, recordar la posició d’un
+			mapa interactiu amb el zoom i les coordenades, desar les darreres paraules
+			buscades en un cercador intern d’una web, guardar les preferències
+			d’idioma escollides per l’usuari o recordar el tema fosc o clar d’una
+			aplicació web.
+		</p>
 
 		<p class="question">
 			Expliqueu de manera molt detallada què fa el codi de cada una d'aquestes
 			parts.
 		</p>
 
-		<p>Aquí la vostra resposta...</p>
+		<p>
+			El codi de la Part 2.1 té dues línies. La primera és
+			<em
+				>document.querySelector(".buttons").addEventListener("click",
+				changeBackground);</em
+			>. Aquí agafem l’element de la pàgina que té la classe buttons i li afegim
+			un escoltador d’esdeveniments. Això vol dir que, cada cop que es fa clic a
+			dins d’aquest contenidor, s’executarà la funció <em>changeBackground</em>.
+			És un mecanisme anomenat delegació d’esdeveniments: en lloc de posar un
+			escoltador a cada botó, n’hi ha un de sol al contenidor i aquest comprova
+			després si el clic realment ha vingut d’un botó. La segona línia és
+			<em
+				>document.querySelectorAll(".btn").forEach((b) =>
+				(b.style.backgroundColor = b.textContent));</em
+			>. Aquí es busquen tots els elements amb la classe btn. La funció
+			<em>querySelectorAll</em> retorna tots els botons trobats en forma de
+			NodeList. Després fem <em>forEach</em>, que recorre tots aquests botons un
+			per un. Per a cada botó (al qual anomenem b dins la funció), assignem el
+			seu color de fons <em>(b.style.backgroundColor)</em> al mateix text que
+			conté <em>(b.textContent)</em>. Per exemple, si un botó té el text red, el
+			seu fons passa a ser vermell. <br />A la Part 2.2 trobem la funció
+			<em>changeBackground(e)</em>. Quan hi ha un clic, el navegador crea un
+			objecte anomenat e que conté tota la informació de l’esdeveniment (on s’ha
+			fet clic, quin element, etc.). Dins de la funció primer hi ha un
+			<em>if (e.target.classList.contains("btn"))</em>. Això comprova si
+			l’element clicat <em>(e.target)</em> té la classe btn. Si no la té, no fa
+			res i surt. Si la condició és certa, llavors s’executen les següents
+			línies.
+			<em>document.body.style.background = e.target.textContent + "6";</em>
+			agafa el text del botó clicat, hi afegeix un “6” al final i ho posa com a
+			valor del color de fons de tot el cos de la pàgina. La següent línia és
+			<em>saveBackgroundColor();</em>, que crida una altra funció (encara no
+			formulada) i que, pel nom, probablement serveix per guardar el color
+			actual al magatzem local (localStorage), de manera que la preferència es
+			mantingui quan es recarregui la pàgina. La línia
+			<em>e.preventDefault();</em> diu al navegador que no executi l’acció per
+			defecte del clic. Finalment, fora de la funció, hi ha
+			<em>console.log("Setup done");</em>, que simplement escriu el text “Setup
+			done” a la consola per confirmar que tota la configuració inicial (posar
+			listeners i estils) s’ha fet correctament.
+		</p>
 
 		<!-- Task 3 -------------------------------------------------------------------------------- -->
 		<h2>3. Classes i mòduls</h2>
