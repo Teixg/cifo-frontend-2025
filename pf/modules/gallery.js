@@ -1,12 +1,14 @@
 //------------------Imports--------------------
 import { getUserData } from "./UserData.js";
-import { getGames } from "./listGames.js";
+import { fetchAllGames, clearGamesCache } from "./listGames.js";
 import {
 	currentPage,
-	pageSize,
-	totalPages,
+	setCurrentPage,
+	setPageSize,
+	setTotalPages,
 	renderPaginationControls,
 } from "./pagination.js";
+import { sortGames } from "./sortGames.js";
 
 //-----------------Variables--------------------
 // Steam API URL for fetching owned games
@@ -21,13 +23,42 @@ const iconA = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fi
   <path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5q0 .807-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33 33 0 0 1 2.5.5m.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935m10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935M3.504 1q.01.775.056 1.469c.13 2.028.457 3.546.87 4.667C5.294 9.48 6.484 10 7 10a.5.5 0 0 1 .5.5v2.61a1 1 0 0 1-.757.97l-1.426.356a.5.5 0 0 0-.179.085L4.5 15h7l-.638-.479a.5.5 0 0 0-.18-.085l-1.425-.356a1 1 0 0 1-.757-.97V10.5A.5.5 0 0 1 9 10c.516 0 1.706-.52 2.57-2.864.413-1.12.74-2.64.87-4.667q.045-.694.056-1.469z"/>
 </svg>`;
 let steamId;
-
+let allGames = [];
+let sortType = "ach";
+let lastSteamId = null;
 //----------------------------------------------
 // Helper to extract SteamID from URL
 function getSteamIdFromUrl() {
 	const urlParams = new URLSearchParams(window.location.search);
 	steamId = urlParams.get("steamid");
 }
+
+// Set initial page size based on screen width
+if (window.innerWidth <= 600) {
+	setPageSize(10); // Mobile: 10 games per page
+} else {
+	setPageSize(20); // Desktop/tablet: 20 games per page
+}
+document.addEventListener("DOMContentLoaded", () => {
+	const pageSizeSelect = document.getElementById("pageSize");
+	if (pageSizeSelect) {
+		const initial = window.innerWidth <= 600 ? 10 : 20;
+		pageSizeSelect.value = initial;
+		pageSizeSelect.addEventListener("change", function () {
+			setCurrentPage(1);
+			displayGames({ steamId });
+		});
+	}
+
+	const sortSelect = document.getElementById("sortType");
+	if (sortSelect) {
+		sortSelect.addEventListener("change", function () {
+			sortType = this.value;
+			setCurrentPage(1);
+			displayGames({ steamId });
+		});
+	}
+});
 
 // Main entry point: runs when DOM is loaded
 document.addEventListener("DOMContentLoaded", async () => {
@@ -53,26 +84,43 @@ document.addEventListener("DOMContentLoaded", async () => {
 	}
 
 	// Fetch and display games for the user (first page)
-	await displayGames({ steamId, gamesUrl, getGames, iconH, iconA });
+	await displayGames({ steamId });
 });
 
 // Main function to fetch and render games for the current page
-async function displayGames({ steamId, gamesUrl, getGames, iconH, iconA }) {
-	// Fetch games for the current page and page size
-	const { games, totalPages: tp } = await getGames(
-		steamId,
-		gamesUrl,
-		currentPage,
-		pageSize
-	);
+async function displayGames({ steamId }) {
+	// If the SteamID has changed, clear the cache and reset allGames
+	if (steamId !== lastSteamId) {
+		clearGamesCache();
+		allGames = [];
+		lastSteamId = steamId;
+	}
+
+	// Fetch all games if not already loaded
+	if (!allGames.length) {
+		allGames = await fetchAllGames(steamId, gamesUrl);
+	}
+
+	const pageSizeSelect = document.getElementById("pageSize");
+	const pageSize = pageSizeSelect ? parseInt(pageSizeSelect.value, 10) : 10;
+
+	// Sort all games
+	const sortedGames = sortGames(allGames, sortType);
+
+	// Paginate after sorting
+	const start = (currentPage - 1) * pageSize;
+	const end = start + pageSize;
+	const pageGames = sortedGames.slice(start, end);
+
+	setTotalPages(Math.ceil(sortedGames.length / pageSize));
 
 	const gallery = document.getElementById("gallery");
 	gallery.innerHTML = "";
 
-	if (games.length > 0) {
+	if (pageGames.length > 0) {
 		// Build the games grid HTML
 		let gamesGrid = `<div class="games-grid">`;
-		games.forEach((game) => {
+		pageGames.forEach((game) => {
 			gamesGrid += `
                 <div class="game-card ${
 									game.ach_onwed === game.ach_total && game.ach_total > 0
@@ -97,10 +145,10 @@ async function displayGames({ steamId, gamesUrl, getGames, iconH, iconA }) {
 
 	// Render pagination controls (prev/next/page selector)
 	renderPaginationControls({
-		displayGames,
+		displayGames: () => displayGames({ steamId }),
 		steamId,
 		gamesUrl,
-		getGames,
+		getGames: fetchAllGames, // for consistency
 		iconH,
 		iconA,
 	});

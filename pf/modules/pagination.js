@@ -1,6 +1,6 @@
 export let currentPage = 1;
-export let pageSize = 10;
 export let totalPages = 1;
+export let pageSize = 10;
 
 export function setPageSize(size) {
 	pageSize = size;
@@ -9,6 +9,10 @@ export function setPageSize(size) {
 
 export function setCurrentPage(page) {
 	currentPage = page;
+}
+
+export function setTotalPages(tp) {
+	totalPages = tp;
 }
 
 export function renderPaginationControls({

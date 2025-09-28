@@ -11,6 +11,8 @@ export class Game {
 
 // Helper to convert raw API data to Game instances
 export async function createGamesFromRaw(rawGames, steamId) {
+	console.log("Creating Game objects for:", rawGames.length, "games");
+
 	return await Promise.all(
 		rawGames.map(async (g) => {
 			const ach = await getPlayerAchievements(steamId, g.appid);
@@ -24,6 +26,8 @@ export async function createGamesFromRaw(rawGames, steamId) {
 			);
 		})
 	);
+	console.log("Created Game objects:", result.length);
+	return result;
 }
 
 // Built-in pagination: page (1-based), pageSize
@@ -31,10 +35,13 @@ export async function getGames(steamId, gamesUrl, page, pageSize = 10) {
 	try {
 		const response = await fetch(`${gamesUrl}&steamid=${steamId}`);
 		const data = await response.json();
+		console.log("Raw API data:", data); // <--- Add this line
+
 		const rawGames = data.response.games || [];
 		const totalGames = rawGames.length;
 		const start = (page - 1) * pageSize;
 		const end = start + pageSize;
+		console.log("page:", page, "pageSize:", pageSize);
 		const pagedGames = rawGames.slice(start, end);
 		const games = await createGamesFromRaw(pagedGames, steamId);
 		return {
@@ -54,6 +61,29 @@ export async function getGames(steamId, gamesUrl, page, pageSize = 10) {
 			totalPages: 0,
 		};
 	}
+}
+
+let allGamesCache = null;
+
+export async function fetchAllGames(steamId, gamesUrl) {
+	if (allGamesCache) return allGamesCache; // Return cached if already fetched
+
+	try {
+		const response = await fetch(`${gamesUrl}&steamid=${steamId}`);
+		const data = await response.json();
+		const rawGames = data.response.games || [];
+		const games = await createGamesFromRaw(rawGames, steamId);
+		allGamesCache = games; // Cache for later use
+		return games;
+	} catch (error) {
+		console.error("Error fetching all games:", error);
+		return [];
+	}
+}
+
+// Optionally, add a function to clear the cache if needed
+export function clearGamesCache() {
+	allGamesCache = null;
 }
 
 async function getPlayerAchievements(steamId, appId) {
