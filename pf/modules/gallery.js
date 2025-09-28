@@ -1,4 +1,9 @@
-//Variables
+//------------------Imports--------------------
+import { getUserData } from "./UserData.js";
+import { Game, createGamesFromRaw } from "./listGames.js";
+import { getGames } from "./listGames.js";
+
+//-----------------Variables--------------------
 const idUrl = `https://corsproxy.io/?url=http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=9E43E82E45266C37789162D8E0B27D25&steamids=`;
 const gamesUrl = `https://corsproxy.io/?url=http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=9E43E82E45266C37789162D8E0B27D25&format=json&include_appinfo=1`;
 const iconH = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16">
@@ -10,11 +15,13 @@ const iconA = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fi
 </svg>`;
 let currentPage = 1;
 const itemsPerPage = 10;
-let gamesList;
+let gamesList = [];
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
 let steamId;
-//
+
+//----------------------------------------------
+
 function getSteamIdFromUrl() {
 	const urlParams = new URLSearchParams(window.location.search);
 	steamId = urlParams.get("steamid");
@@ -44,16 +51,24 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 async function displayGames() {
-	// Mostrar juegos del usuario
-	const games = await getGames(steamId);
-	if (games.length > 0) {
+	// Only fetch all games once
+	if (!gamesList.length) {
+		gamesList = await getGames(steamId, gamesUrl);
+	}
+	// Apply pagination here
+	const gamesPagination = gamesList.slice(
+		(currentPage - 1) * itemsPerPage,
+		currentPage * itemsPerPage
+	);
+
+	if (gamesPagination.length > 0) {
 		document.getElementById("gallery").innerHTML = "";
 		let gamesGrid = `
-    <h2>Owned Games</h2>
+    
     <div class="games-grid">
  	`;
 
-		games.forEach((game) => {
+		gamesPagination.forEach((game) => {
 			gamesGrid +=
 				`
       <div class="game-card ` +
@@ -93,7 +108,7 @@ document.addEventListener("click", function (e) {
 	}
 });
 
-async function getUserData(steamId) {
+/*async function getUserData(steamId) {
 	try {
 		const response = await fetch(idUrl + steamId);
 		const data = await response.json();
@@ -117,48 +132,17 @@ async function getGames(steamId) {
 			(currentPage - 1) * itemsPerPage,
 			currentPage * itemsPerPage
 		);
-		// Transformamos cada entrada en un objeto Game
-		const games = await Promise.all(
-			gamesPagination.map(async (g) => {
-				const ach = await GetPlayerAchievements(steamId, g.appid);
-				return new Game(
-					g.appid,
-					g.name,
-					`https://cdn.akamai.steamstatic.com/steam/apps/${g.appid}/header.jpg`,
-					g.playtime_forever,
-					ach.ach_owned,
-					ach.ach_total
-				);
-			})
+		const games = await createGamesFromRaw(
+			gamesPagination,
+			steamId,
+			GetPlayerAchievements
 		);
 		return games;
 	} catch (error) {
 		console.error("Error fetching games:", error);
 		return [];
 	}
-}
-
-async function GetPlayerAchievements(steamId, appId) {
-	try {
-		const response = await fetch(
-			`https://corsproxy.io/?url=http://api.steampowered.com/ISteamUserStats/GetPlayerAchievements/v0001/?key=9E43E82E45266C37789162D8E0B27D25&steamid=${steamId}&appid=${appId}`
-		);
-		const data = await response.json();
-		// Si no hay playerstats o achievements, devolvemos 0
-		if (!data.playerstats || !data.playerstats.achievements) {
-			return { ach_owned: 0, ach_total: 0 };
-		}
-
-		const achievements = data.playerstats.achievements;
-		const ach_owned = achievements.filter((a) => a.achieved === 1).length;
-		const ach_total = achievements.length;
-
-		return { ach_owned, ach_total };
-	} catch (error) {
-		console.error("Error fetching achievements:", error);
-		return { ach_owned: 0, ach_total: 0 };
-	}
-}
+}*/
 
 prevBtn.addEventListener("click", async () => {
 	if (currentPage > 1) {
@@ -174,7 +158,7 @@ nextBtn.addEventListener("click", async () => {
 	}
 });
 
-class Game {
+/*class Game {
 	constructor(id, title, img, playtime, ach_onwed, ach_total) {
 		this.id = id;
 		this.title = title;
@@ -183,4 +167,4 @@ class Game {
 		this.ach_onwed = ach_onwed;
 		this.ach_total = ach_total;
 	}
-}
+}*/

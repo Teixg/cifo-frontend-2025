@@ -83,12 +83,14 @@ function displayGameDetails(details, achievements) {
 	const description = details.short_description || ""; // You may need to fetch this from another endpoint
 
 	gameContainer.innerHTML = `
-        <h1>${gameName}</h1>
+        <h1 class="title">${gameName}</h1>
         ${
-					headerImg ? `<img src="${headerImg}" alt="${gameName} header" />` : ""
+					headerImg
+						? `<img  src="${headerImg}" alt="${gameName} header" />`
+						: ""
 				}
         <p>${description}</p>
-        <h2>Achievements</h2>
+        <h2 class="subtitle">Achievements</h2>
         <ul>
             ${achievements
 							.map(
@@ -99,7 +101,9 @@ function displayGameDetails(details, achievements) {
 											: ach.icongray
 									}" alt="${ach.displayName} icon" /> <p><strong>${
 										ach.displayName
-									}</strong>: ${ach.description}<p></li>`
+									}</strong> ${
+										ach.description === undefined ? "" : ach.description
+									}<p></li>`
 							)
 							.join("")}</ul>`;
 }
