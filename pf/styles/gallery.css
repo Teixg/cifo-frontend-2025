@@ -91,13 +91,13 @@ header {
 }
 
 /* Pagination styles */
-.pagination {
+.pagination-controls {
 	display: flex;
 	justify-content: center;
 	margin-top: 20px;
 	gap: 10px;
 }
-.pagination button {
+.pagination-controls button {
 	background: #333;
 	color: #fff;
 	border: none;
@@ -107,6 +107,6 @@ header {
 	font-size: 1rem;
 }
 
-.pagination button:hover {
+.pagination-controls button:hover {
 	background: #555;
 }
