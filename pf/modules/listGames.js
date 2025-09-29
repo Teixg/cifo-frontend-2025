@@ -110,3 +110,38 @@ async function getPlayerAchievements(steamId, appId) {
 		return { ach_owned: 0, ach_total: 0 };
 	}
 }
+
+const achievementsCache = new Map();
+
+export async function getPlayerAchievementsCached(steamId, appId) {
+	const key = `${steamId}_${appId}`;
+	if (achievementsCache.has(key)) {
+		return achievementsCache.get(key);
+	}
+	const ach = await getPlayerAchievements(steamId, appId);
+	achievementsCache.set(key, ach);
+	return ach;
+}
+
+// Batch fetch achievements for an array of games, with concurrency limit
+export async function batchFetchAchievements(
+	games,
+	steamId,
+	batchSize = 5,
+	delay = 300
+) {
+	for (let i = 0; i < games.length; i += batchSize) {
+		const batch = games.slice(i, i + batchSize);
+		await Promise.all(
+			batch.map(async (g) => {
+				const ach = await getPlayerAchievementsCached(steamId, g.appid);
+				g.ach_onwed = ach.ach_owned;
+				g.ach_total = ach.ach_total;
+			})
+		);
+		// Delay between batches to avoid rate limits
+		if (i + batchSize < games.length) {
+			await new Promise((res) => setTimeout(res, delay));
+		}
+	}
+}

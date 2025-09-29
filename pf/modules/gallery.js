@@ -1,6 +1,10 @@
 //------------------Imports--------------------
 import { getUserData } from "./UserData.js";
-import { fetchAllGames, clearGamesCache } from "./listGames.js";
+import {
+	fetchAllGames,
+	batchFetchAchievements,
+	clearGamesCache,
+} from "./listGames.js";
 import {
 	currentPage,
 	setCurrentPage,
@@ -24,8 +28,9 @@ const iconA = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fi
 </svg>`;
 let steamId;
 let allGames = [];
-let sortType = "ach";
+let sortType = "alpha";
 let lastSteamId = null;
+let achievementsLoaded = false;
 //----------------------------------------------
 // Helper to extract SteamID from URL
 function getSteamIdFromUrl() {
@@ -51,6 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 
 	const sortSelect = document.getElementById("sortType");
+	if (sortSelect) sortSelect.value = "alpha";
 	if (sortSelect) {
 		sortSelect.addEventListener("change", function () {
 			sortType = this.value;
@@ -89,6 +95,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 // Main function to fetch and render games for the current page
 async function displayGames({ steamId }) {
+	const loader = document.getElementById("loader");
+	const gallery = document.getElementById("gallery");
+
+	if (loader) loader.style.display = "flex";
+	if (gallery) gallery.style.display = "none";
+
 	// If the SteamID has changed, clear the cache and reset allGames
 	if (steamId !== lastSteamId) {
 		clearGamesCache();
@@ -104,7 +116,7 @@ async function displayGames({ steamId }) {
 	const pageSizeSelect = document.getElementById("pageSize");
 	const pageSize = pageSizeSelect ? parseInt(pageSizeSelect.value, 10) : 10;
 
-	// Sort all games
+	// Sort all games by time or alphabetically
 	const sortedGames = sortGames(allGames, sortType);
 
 	// Paginate after sorting
@@ -114,7 +126,12 @@ async function displayGames({ steamId }) {
 
 	setTotalPages(Math.ceil(sortedGames.length / pageSize));
 
-	const gallery = document.getElementById("gallery");
+	// Fetch achievements only for games on this page
+	await batchFetchAchievements(pageGames, steamId, 5, 300);
+
+	if (loader) loader.style.display = "none";
+	if (gallery) gallery.style.display = "";
+
 	gallery.innerHTML = "";
 
 	if (pageGames.length > 0) {
@@ -127,11 +144,15 @@ async function displayGames({ steamId }) {
 										? "completed"
 										: ""
 								}">
-                    <img src="${game.img}" alt="${game.title} header">
-                    <p>${game.title}</p>
+                    <img src="${game.img}" alt="${game.name} header">
+                    <p>${game.name}</p>
                     <div class="stats">
-                        <p>${iconH}: ${Math.round(game.playtime / 60)}h</p>
-                        <p>${iconA}: ${game.ach_onwed}/${game.ach_total}</p>
+                        <p>${iconH}: ${Math.round(
+				game.playtime_forever / 60
+			)}h</p>
+                        <p>${iconA}: ${game.ach_onwed ?? 0}/${
+				game.ach_total ?? 0
+			}</p>
                     </div>
                 </div>
             `;

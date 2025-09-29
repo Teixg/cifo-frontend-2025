@@ -34,12 +34,15 @@
 		<div class="d-flex align-items-center mb-3">
   <label for="sortType" class="me-2">Sort by:</label>
   <select id="sortType" class="form-select w-auto">
-    <option value="ach">Most % Achievements</option>
-    <option value="alpha">Alphabetical (A-Z)</option>
+    <option value="alpha" selected>Alphabetical (A-Z)</option>
     <option value="time">Most Time Played</option>
   </select>
 </div>
-		<div id="gallery"></div>
+		<div id="gallery"><div id="loader" class="d-flex justify-content-center my-4" style="display:none;">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div></div>
 		<div class="d-flex align-items-center mb-3">
   <label for="pageSize" class="me-2">Games per page:</label>
   <select id="pageSize" class="form-select w-auto">
