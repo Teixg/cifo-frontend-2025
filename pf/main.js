@@ -1,7 +1,7 @@
 const bt1 = document.getElementById("fecth1");
 const idUrl = `https://corsproxy.io/?url=http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=9E43E82E45266C37789162D8E0B27D25&steamids=`;
 const vanityUrl = `https://corsproxy.io/?url=http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key=9E43E82E45266C37789162D8E0B27D25&vanityurl=`;
-const steamApiUrl = `http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key=YOUR_KEY&vanityurl=USERNAME`;
+const steamApiUrl = `http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key=9E43E82E45266C37789162D8E0B27D25&vanityurl=`;
 const proxyUrl = `/.netlify/functions/steam-proxy?url=${encodeURIComponent(
 	steamApiUrl
 )}`;
