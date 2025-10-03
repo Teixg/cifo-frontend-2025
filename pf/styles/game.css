@@ -32,10 +32,28 @@ li img {
 	margin-right: 10px;
 }
 
-li p {
-	margin: 0;
-	font-size: 0.7rem;
-}
 li strong {
 	font-size: 0.8rem;
+}
+
+.achievements ul {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+	gap: 0.5rem;
+}
+
+.achievement-details {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.achievement-details p {
+	margin: 0;
+	font-size: 0.8rem;
+	color: #ddd;
+}
+.achievement-details strong {
+	font-size: 1rem;
+	color: #fff;
 }

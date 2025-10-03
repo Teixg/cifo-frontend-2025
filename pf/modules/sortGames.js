@@ -1,11 +1,9 @@
-export function sortGames(games, sortType = "ach") {
+export function sortGames(games, sortType = "alpha") {
 	const sorted = [...games];
 	if (sortType === "alpha") {
-		sorted.sort((a, b) => (a.name || "").localeCompare(b.name || ""));
+		sorted.sort((a, b) => (a.title || "").localeCompare(b.title || ""));
 	} else if (sortType === "time") {
-		sorted.sort(
-			(a, b) => (b.playtime_forever || 0) - (a.playtime_forever || 0)
-		);
+		sorted.sort((a, b) => (b.playtime || 0) - (a.playtime || 0));
 	}
 	return sorted;
 }

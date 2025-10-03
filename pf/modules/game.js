@@ -1,12 +1,12 @@
 // Get steam id and app id from url
 const urlParams = new URLSearchParams(window.location.search);
 const steamId = urlParams.get("steamid");
-const appId = urlParams.get("gameid");
+const appId = urlParams.get("appid");
 console.log(steamId, appId);
 
 // Fetch game details from Steam API
 async function fetchGameDetails(appId, steamId) {
-	const gameDetailsUrl = `https://corsproxy.io/?url=http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=${appId}&key=9E43E82E45266C37789162D8E0B27D25&steamid=${steamId}`;
+	const gameDetailsUrl = `http://localhost:8080/http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=${appId}&key=9E43E82E45266C37789162D8E0B27D25&steamid=${steamId}`;
 	try {
 		const response = await fetch(gameDetailsUrl);
 		const data = await response.json();
@@ -20,7 +20,7 @@ async function fetchGameDetails(appId, steamId) {
 
 // Fetch achievements
 async function fetchAchievements(appId) {
-	const achievementsUrl = `https://corsproxy.io/?url=http://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v2?appid=${appId}&key=9E43E82E45266C37789162D8E0B27D25&format=json`;
+	const achievementsUrl = `http://localhost:8080/http://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v2?appid=${appId}&key=9E43E82E45266C37789162D8E0B27D25&format=json`;
 	try {
 		const response = await fetch(achievementsUrl);
 		const data = await response.json();
@@ -91,6 +91,7 @@ function displayGameDetails(details, achievements) {
 				}
         <p>${description}</p>
         <h2 class="subtitle">Achievements</h2>
+		<div class="achievements">
         <ul>
             ${achievements
 							.map(
@@ -99,13 +100,15 @@ function displayGameDetails(details, achievements) {
 										isAchievementUnlocked(ach, details)
 											? ach.icon
 											: ach.icongray
-									}" alt="${ach.displayName} icon" /> <p><strong>${
+									}" alt="${
+										ach.displayName
+									} icon" /> <div class="achievement-details"><p><strong>${
 										ach.displayName
 									}</strong> ${
 										ach.description === undefined ? "" : ach.description
-									}<p></li>`
+									}<p></div></li>`
 							)
-							.join("")}</ul>`;
+							.join("")}</ul></div>`;
 }
 
 // Main async function to coordinate everything

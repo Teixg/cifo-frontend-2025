@@ -1,10 +1,6 @@
 //------------------Imports--------------------
 import { getUserData } from "./UserData.js";
-import {
-	fetchAllGames,
-	batchFetchAchievements,
-	clearGamesCache,
-} from "./listGames.js";
+import { fetchAllGames } from "./listGames.js";
 import {
 	currentPage,
 	setCurrentPage,
@@ -16,7 +12,7 @@ import { sortGames } from "./sortGames.js";
 
 //-----------------Variables--------------------
 // Steam API URL for fetching owned games
-const gamesUrl = `https://corsproxy.io/?url=http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=9E43E82E45266C37789162D8E0B27D25&format=json&include_appinfo=1`;
+const gamesUrl = `http://localhost:8080/http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=9E43E82E45266C37789162D8E0B27D25&format=json&include_appinfo=1`;
 
 // SVG icons for hours and achievements
 const iconH = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16">
@@ -29,8 +25,6 @@ const iconA = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fi
 let steamId;
 let allGames = [];
 let sortType = "alpha";
-let lastSteamId = null;
-let achievementsLoaded = false;
 //----------------------------------------------
 // Helper to extract SteamID from URL
 function getSteamIdFromUrl() {
@@ -101,13 +95,6 @@ async function displayGames({ steamId }) {
 	if (loader) loader.style.display = "flex";
 	if (gallery) gallery.style.display = "none";
 
-	// If the SteamID has changed, clear the cache and reset allGames
-	if (steamId !== lastSteamId) {
-		clearGamesCache();
-		allGames = [];
-		lastSteamId = steamId;
-	}
-
 	// Fetch all games if not already loaded
 	if (!allGames.length) {
 		allGames = await fetchAllGames(steamId, gamesUrl);
@@ -126,9 +113,6 @@ async function displayGames({ steamId }) {
 
 	setTotalPages(Math.ceil(sortedGames.length / pageSize));
 
-	// Fetch achievements only for games on this page
-	await batchFetchAchievements(pageGames, steamId, 5, 300);
-
 	if (loader) loader.style.display = "none";
 	if (gallery) gallery.style.display = "";
 
@@ -138,17 +122,19 @@ async function displayGames({ steamId }) {
 		// Build the games grid HTML
 		let gamesGrid = `<div class="games-grid">`;
 		pageGames.forEach((game) => {
+			const gameUrl = `game.html?appid=${game.id}&steamid=${steamId}`;
 			gamesGrid += `
+        <a href="${gameUrl}" class="game-card-link">
                 <div class="game-card ${
 									game.ach_onwed === game.ach_total && game.ach_total > 0
 										? "completed"
 										: ""
 								}">
-                    <img src="${game.img}" alt="${game.name} header">
-                    <p>${game.name}</p>
+                    <img src="${game.img}" alt="${game.title} header">
+                    <p>${game.title}</p>
                     <div class="stats">
                         <p>${iconH}: ${Math.round(
-				game.playtime_forever / 60
+				(game.playtime || 0) / 60
 			)}h</p>
                         <p>${iconA}: ${game.ach_onwed ?? 0}/${
 				game.ach_total ?? 0
@@ -169,7 +155,7 @@ async function displayGames({ steamId }) {
 		displayGames: () => displayGames({ steamId }),
 		steamId,
 		gamesUrl,
-		getGames: fetchAllGames, // for consistency
+		fetchAllGames, // for consistency
 		iconH,
 		iconA,
 	});

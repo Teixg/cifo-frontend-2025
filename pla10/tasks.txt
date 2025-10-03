@@ -1,0 +1,21 @@
+
+------------TASCA 1------------
+
+Inconvenients de les SPA
+
+1.SEO limitat -Com que el contingut es carrega via JavaScript, els cercadors poden tenir més dificultats per indexar les pàgines.
+
+2.Temps de càrrega inicial -El primer accés pot ser lent perquè s’ha de descarregar tot el JavaScript de cop.
+
+3.Gestió de l’historial i navegació -Cal implementar rutes al client per simular la navegació tradicional, cosa que afegeix complexitat.
+
+4.Seguretat -Les SPA depenen molt de les API, i això pot exposar més punts d’atac si no es gestionen bé.
+
+5.Consum de memòria -Si l’aplicació creix massa i no es gestionen bé els components, pot afectar el rendiment del navegador.
+
+6.Accessibilitat -Requereix una atenció especial perquè els lectors de pantalla i altres eines funcionin correctament.
+
+------------TASCA 2------------
+
+VSCode React Refactor
+-Serveix per refactoritzar components React: extreure JSX repetit, convertir funcions en components, fer classe → funcions, etc.

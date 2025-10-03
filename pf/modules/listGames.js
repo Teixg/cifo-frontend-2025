@@ -26,11 +26,10 @@ export async function createGamesFromRaw(rawGames, steamId) {
 			);
 		})
 	);
-	console.log("Created Game objects:", result.length);
-	return result;
 }
 
 // Built-in pagination: page (1-based), pageSize
+/*
 export async function getGames(steamId, gamesUrl, page, pageSize = 10) {
 	try {
 		const response = await fetch(`${gamesUrl}&steamid=${steamId}`);
@@ -61,19 +60,15 @@ export async function getGames(steamId, gamesUrl, page, pageSize = 10) {
 			totalPages: 0,
 		};
 	}
-}
-
-let allGamesCache = null;
+}*/
 
 export async function fetchAllGames(steamId, gamesUrl) {
-	if (allGamesCache) return allGamesCache; // Return cached if already fetched
-
 	try {
 		const response = await fetch(`${gamesUrl}&steamid=${steamId}`);
 		const data = await response.json();
 		const rawGames = data.response.games || [];
 		const games = await createGamesFromRaw(rawGames, steamId);
-		allGamesCache = games; // Cache for later use
+		console.log("All games fetched and cached:", games);
 		return games;
 	} catch (error) {
 		console.error("Error fetching all games:", error);
@@ -81,15 +76,10 @@ export async function fetchAllGames(steamId, gamesUrl) {
 	}
 }
 
-// Optionally, add a function to clear the cache if needed
-export function clearGamesCache() {
-	allGamesCache = null;
-}
-
 async function getPlayerAchievements(steamId, appId) {
 	try {
 		const response = await fetch(
-			`https://corsproxy.io/?url=http://api.steampowered.com/ISteamUserStats/GetPlayerAchievements/v0001/?key=9E43E82E45266C37789162D8E0B27D25&steamid=${steamId}&appid=${appId}`
+			`http://localhost:8080/http://api.steampowered.com/ISteamUserStats/GetPlayerAchievements/v0001/?key=9E43E82E45266C37789162D8E0B27D25&steamid=${steamId}&appid=${appId}`
 		);
 		if (!response.ok) {
 			// 400 likely means no achievements or not owned/private
@@ -108,40 +98,5 @@ async function getPlayerAchievements(steamId, appId) {
 	} catch (error) {
 		console.error("Error fetching achievements:", error);
 		return { ach_owned: 0, ach_total: 0 };
-	}
-}
-
-const achievementsCache = new Map();
-
-export async function getPlayerAchievementsCached(steamId, appId) {
-	const key = `${steamId}_${appId}`;
-	if (achievementsCache.has(key)) {
-		return achievementsCache.get(key);
-	}
-	const ach = await getPlayerAchievements(steamId, appId);
-	achievementsCache.set(key, ach);
-	return ach;
-}
-
-// Batch fetch achievements for an array of games, with concurrency limit
-export async function batchFetchAchievements(
-	games,
-	steamId,
-	batchSize = 5,
-	delay = 300
-) {
-	for (let i = 0; i < games.length; i += batchSize) {
-		const batch = games.slice(i, i + batchSize);
-		await Promise.all(
-			batch.map(async (g) => {
-				const ach = await getPlayerAchievementsCached(steamId, g.appid);
-				g.ach_onwed = ach.ach_owned;
-				g.ach_total = ach.ach_total;
-			})
-		);
-		// Delay between batches to avoid rate limits
-		if (i + batchSize < games.length) {
-			await new Promise((res) => setTimeout(res, delay));
-		}
 	}
 }
