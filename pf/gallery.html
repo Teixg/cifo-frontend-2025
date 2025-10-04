@@ -27,37 +27,45 @@
 	</head>
 	<body>
 		<header>
-			<div class="logo-container"><img class="logo" src="./assets/logo.png" alt="Playlitics Logo" />
-			<h1>Playlitics</h1></div>
+			<div class="logo-container">
+				<img class="logo" src="./assets/logo.png" alt="Playlitics Logo" />
+				<h1>Playlitics</h1>
+			</div>
 			<div id="userInfo"></div>
 		</header>
 		<div class="d-flex align-items-center mb-3">
-  <label for="sortType" class="me-2">Sort by:</label>
-  <select id="sortType" class="form-select w-auto">
-    <option value="alpha" selected>Alphabetical (A-Z)</option>
-    <option value="time">Most Time Played</option>
-  </select>
-</div>
-		<div id="gallery"><div id="loader" class="d-flex justify-content-center my-4" style="display:none;">
-  <div class="spinner-border text-primary" role="status">
-    <span class="visually-hidden">Loading...</span>
-  </div>
-</div></div>
+			<label for="sortType" class="me-2">Sort by:</label>
+			<select id="sortType" class="form-select w-auto">
+				<option value="alpha" selected>Alphabetical (A-Z)</option>
+				<option value="time">Most Time Played</option>
+			</select>
+		</div>
+		<div id="gallery">
+			<div
+				id="loader"
+				class="d-flex justify-content-center my-4"
+				style="display: none"
+			>
+				<div class="spinner-border text-primary" role="status">
+					<span class="visually-hidden">Loading...</span>
+				</div>
+			</div>
+		</div>
 		<div class="d-flex align-items-center mb-3">
-  <label for="pageSize" class="me-2">Games per page:</label>
-  <select id="pageSize" class="form-select w-auto">
-    <option value="5">5</option>
-    <option value="10" selected>10</option>
-    <option value="15">15</option>
-    <option value="20">20</option>
-	<option value="25">25</option>
-	<option value="30">30</option>
-	<option value="35">35</option>
-	<option value="40">40</option>
-  </select>
-</div>
- <div id="pagination-controls"> 
-		</div><footer>
+			<label for="pageSize" class="me-2">Games per page:</label>
+			<select id="pageSize" class="form-select w-auto">
+				<option value="5">5</option>
+				<option value="10" selected>10</option>
+				<option value="15">15</option>
+				<option value="20">20</option>
+				<option value="25">25</option>
+				<option value="30">30</option>
+				<option value="35">35</option>
+				<option value="40">40</option>
+			</select>
+		</div>
+		<div id="pagination-controls"></div>
+		<footer>
 			<p>
 				Playlitics is a platform that provides insights and analytics for
 				gamers.
@@ -73,11 +81,15 @@
 		></script>
 	</body>
 </html>
-
-<template>
-	<div class="card game-card">
-		<img src="" class="card-img-top game-img" alt="Game Image" />
-		<div class="card-body">
-			<h5 class="card-title game-title"></h5>
-			<p class="card-text game-appid"></p>	
+<template id="game-card-template">
+	<a class="game-card-link">
+		<div class="game-card">
+			<img class="game-img" src="" alt="" />
+			<p class="game-title"></p>
+			<div class="stats">
+				<p class="game-hours"></p>
+				<p class="game-achievements"></p>
+			</div>
+		</div>
+	</a>
 </template>

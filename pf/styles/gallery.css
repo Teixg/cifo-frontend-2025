@@ -41,11 +41,15 @@ header {
 
 /* Gallery grid styles */
 .games-grid {
+	margin: 1rem;
 	display: grid;
 	gap: 1rem;
 	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 }
-
+.game-card-link {
+	text-decoration: none;
+	color: inherit;
+}
 .game-card {
 	background: #1e1e1e;
 	color: #fff;
@@ -53,10 +57,10 @@ header {
 	padding: 10px;
 	text-align: center;
 	transition: transform 0.2s, box-shadow 0.2s;
-	font-size: auto;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	height: 14rem;
 }
 .game-card p {
 	margin: 0.5rem 0;
@@ -91,13 +95,13 @@ header {
 }
 
 /* Pagination styles */
-.pagination-controls {
+#pagination-controls {
 	display: flex;
 	justify-content: center;
 	margin-top: 20px;
 	gap: 10px;
 }
-.pagination-controls button {
+#pagination-controls button {
 	background: #333;
 	color: #fff;
 	border: none;
@@ -107,6 +111,29 @@ header {
 	font-size: 1rem;
 }
 
-.pagination-controls button:hover {
+#pagination-controls button:hover {
 	background: #555;
+}
+
+#pageSizeSelect {
+	margin-left: 10px;
+	padding: 5px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	font-size: 1rem;
+	background: #222;
+	color: #fff;
+}
+
+.mx-2 {
+	margin-left: 0.5rem;
+	margin-right: 0.5rem;
+	background: #333;
+	color: #fff;
+	padding: 10px 15px;
+	border-radius: 5px;
+}
+span {
+	font-weight: bold;
+	align-content: center;
 }

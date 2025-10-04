@@ -1,6 +1,6 @@
 //------------------Imports--------------------
-import { getUserData } from "./UserData.js";
-import { fetchAllGames } from "./listGames.js";
+import { getUserData } from "./userData.js";
+import { fetchAllGames, addAchievementsToGames } from "./listGames.js";
 import {
 	currentPage,
 	setCurrentPage,
@@ -91,71 +91,73 @@ document.addEventListener("DOMContentLoaded", async () => {
 async function displayGames({ steamId }) {
 	const loader = document.getElementById("loader");
 	const gallery = document.getElementById("gallery");
+	const template = document.getElementById("game-card-template");
 
 	if (loader) loader.style.display = "flex";
 	if (gallery) gallery.style.display = "none";
 
 	// Fetch all games if not already loaded
 	if (!allGames.length) {
-		allGames = await fetchAllGames(steamId, gamesUrl);
+		allGames = await fetchAllGames(steamId, gamesUrl); // Basic info only
 	}
 
 	const pageSizeSelect = document.getElementById("pageSize");
 	const pageSize = pageSizeSelect ? parseInt(pageSizeSelect.value, 10) : 10;
 
-	// Sort all games by time or alphabetically
 	const sortedGames = sortGames(allGames, sortType);
-
-	// Paginate after sorting
 	const start = (currentPage - 1) * pageSize;
 	const end = start + pageSize;
-	const pageGames = sortedGames.slice(start, end);
+	let pageGames = sortedGames.slice(start, end);
+
+	// Fetch achievements only for games on this page
+	pageGames = await addAchievementsToGames(pageGames, steamId);
 
 	setTotalPages(Math.ceil(sortedGames.length / pageSize));
+	gallery.innerHTML = "";
+
+	if (pageGames.length > 0) {
+		const gamesGrid = document.createElement("div");
+		gamesGrid.className = "games-grid";
+
+		pageGames.forEach((game) => {
+			const clone = template.content.cloneNode(true);
+
+			const link = clone.querySelector(".game-card-link");
+			link.href = `game.html?appid=${game.id}&steamid=${steamId}`;
+
+			const card = clone.querySelector(".game-card");
+			if (game.ach_onwed === game.ach_total && game.ach_total > 0) {
+				card.classList.add("completed");
+			}
+
+			const img = clone.querySelector(".game-img");
+			img.src = game.img;
+			img.alt = `${game.title} header`;
+
+			const title = clone.querySelector(".game-title");
+			title.textContent = game.title;
+
+			const stats = clone.querySelector(".stats");
+			stats.innerHTML = `
+                <p>${iconH}: ${Math.round((game.playtime || 0) / 60)}h</p>
+                <p>${iconA}: ${game.ach_onwed ?? 0}/${game.ach_total ?? 0}</p>
+            `;
+
+			gamesGrid.appendChild(clone);
+		});
+		gallery.appendChild(gamesGrid);
+	} else {
+		gallery.innerHTML = "<p>No games found.</p>";
+	}
 
 	if (loader) loader.style.display = "none";
 	if (gallery) gallery.style.display = "";
 
-	gallery.innerHTML = "";
-
-	if (pageGames.length > 0) {
-		// Build the games grid HTML
-		let gamesGrid = `<div class="games-grid">`;
-		pageGames.forEach((game) => {
-			const gameUrl = `game.html?appid=${game.id}&steamid=${steamId}`;
-			gamesGrid += `
-        <a href="${gameUrl}" class="game-card-link">
-                <div class="game-card ${
-									game.ach_onwed === game.ach_total && game.ach_total > 0
-										? "completed"
-										: ""
-								}">
-                    <img src="${game.img}" alt="${game.title} header">
-                    <p>${game.title}</p>
-                    <div class="stats">
-                        <p>${iconH}: ${Math.round(
-				(game.playtime || 0) / 60
-			)}h</p>
-                        <p>${iconA}: ${game.ach_onwed ?? 0}/${
-				game.ach_total ?? 0
-			}</p>
-                    </div>
-                </div>
-            `;
-		});
-		gamesGrid += `</div>`;
-		gallery.innerHTML = gamesGrid;
-	} else {
-		// Show message if no games found
-		gallery.innerHTML = "<p>No games found.</p>";
-	}
-
-	// Render pagination controls (prev/next/page selector)
 	renderPaginationControls({
 		displayGames: () => displayGames({ steamId }),
 		steamId,
 		gamesUrl,
-		fetchAllGames, // for consistency
+		fetchAllGames,
 		iconH,
 		iconA,
 	});

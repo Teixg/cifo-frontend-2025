@@ -2,24 +2,22 @@ export let currentPage = 1;
 export let totalPages = 1;
 export let pageSize = 10;
 
-export function setPageSize(size) {
-	pageSize = size;
-	currentPage = 1;
-}
-
 export function setCurrentPage(page) {
 	currentPage = page;
 }
-
-export function setTotalPages(tp) {
-	totalPages = tp;
+export function setPageSize(size) {
+	pageSize = size;
+}
+export function setTotalPages(pages) {
+	totalPages = pages;
 }
 
+// Render pagination controls (prev/next/page selector)
 export function renderPaginationControls({
 	displayGames,
 	steamId,
 	gamesUrl,
-	getGames,
+	fetchAllGames,
 	iconH,
 	iconA,
 }) {
@@ -35,7 +33,7 @@ export function renderPaginationControls({
 	prevBtn.onclick = () => {
 		if (currentPage > 1) {
 			currentPage--;
-			displayGames({ steamId, gamesUrl, getGames, iconH, iconA });
+			displayGames({ steamId, gamesUrl, fetchAllGames, iconH, iconA });
 		}
 	};
 	controls.appendChild(prevBtn);
@@ -52,7 +50,7 @@ export function renderPaginationControls({
 	}
 	pageSelect.onchange = function () {
 		currentPage = parseInt(this.value, 10);
-		displayGames({ steamId, gamesUrl, getGames, iconH, iconA });
+		displayGames({ steamId, gamesUrl, fetchAllGames, iconH, iconA });
 	};
 	controls.appendChild(pageSelect);
 
@@ -68,7 +66,7 @@ export function renderPaginationControls({
 	nextBtn.onclick = () => {
 		if (currentPage < totalPages) {
 			currentPage++;
-			displayGames({ steamId, gamesUrl, getGames, iconH, iconA });
+			displayGames({ steamId, gamesUrl, fetchAllGames, iconH, iconA });
 		}
 	};
 	controls.appendChild(nextBtn);

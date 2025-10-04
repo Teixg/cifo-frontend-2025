@@ -1,15 +1,41 @@
-.logo {
+header {
+	display: flex;
+	align-items: left;
+	text-align: left;
+	justify-content: space-around;
+	margin-bottom: 1rem;
+}
+.logo-container {
+	display: flex;
+	flex-direction: row;
 	align-items: center;
 }
 
-.title {
-	width: 100%;
-	max-height: 300px;
-	object-fit: cover;
-	margin-bottom: 20px;
-	border-radius: 10px;
+.logo {
+	width: 4rem;
+	height: auto;
+}
+
+#userInfo {
+	text-align: right;
+	margin-bottom: 2rem;
+	margin-top: 2rem;
+	margin-right: 1rem;
+	gap: 1rem;
+	display: flex;
+	flex-direction: row;
 	align-items: center;
-	text-align: center;
+	text-size-adjust: 60%;
+}
+#userInfo p {
+	padding: 0;
+	margin: 0;
+}
+#userInfo img {
+	width: 50px;
+	height: 50px;
+	border-radius: 10%;
+	vertical-align: middle;
 }
 
 .subtitle {
@@ -24,6 +50,7 @@ li {
 	margin: 5px 0;
 	list-style: none;
 	display: flex;
+	align-items: flex-start;
 }
 
 li img {
@@ -56,4 +83,113 @@ li strong {
 .achievement-details strong {
 	font-size: 1rem;
 	color: #fff;
+}
+
+#game-stats {
+	margin: 1rem;
+	padding: 1rem;
+	background: #1e1e1e;
+	color: #fff;
+	border-radius: 10px;
+	max-width: 30rem;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+#game-stats p {
+	margin: 0.5rem 0;
+	font-size: 1rem;
+}
+#game-stats strong {
+	font-size: 1.1rem;
+	color: #fff;
+}
+#game-stats p:first-child {
+	margin-top: 0;
+}
+#game-stats p:last-child {
+	margin-bottom: 0;
+}
+
+.game-header-img {
+	width: 40rem;
+	height: auto;
+	margin-bottom: 1rem;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#scroll-to-top.nav-btn {
+	position: fixed;
+	right: 24px;
+	bottom: 24px;
+	z-index: 1000;
+	padding: 12px 18px;
+	border-radius: 50px;
+	background: #222;
+	color: #fff;
+	font-size: 1.2rem;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+	opacity: 0.85;
+	border: none;
+	cursor: pointer;
+	transition: opacity 0.2s;
+}
+#scroll-to-top.nav-btn:hover {
+	opacity: 1;
+}
+
+#back-to-gallery.nav-btn {
+	margin-bottom: 1rem;
+	padding: 0.5rem 1rem;
+	border-radius: 10px;
+	background: #222;
+	color: #fff;
+	font-size: 1rem;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+	opacity: 0.85;
+	border: none;
+	cursor: pointer;
+	transition: opacity 0.2s;
+}
+
+@media (max-width: 600px) {
+	.game-header-img {
+		width: 20rem;
+	}
+	#userInfo img {
+		width: 40px;
+		height: 40px;
+	}
+	#userInfo {
+		flex-direction: column;
+		align-items: flex-end;
+		text-align: right;
+	}
+	.subtitle {
+		font-size: 1rem;
+	}
+	li img {
+		width: 3rem;
+		height: 3rem;
+	}
+	.achievement-details strong {
+		font-size: 1rem;
+	}
+	.achievement-details p {
+		font-size: 0.8rem;
+	}
+	#game-stats p {
+		font-size: 0.9rem;
+	}
+	#game-stats strong {
+		font-size: 1rem;
+	}
+}
+
+.bi-trophy-fill {
+	color: orange;
+	margin-right: 1rem;
+	margin-left: 1rem;
 }

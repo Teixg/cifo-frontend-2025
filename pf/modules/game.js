@@ -1,8 +1,11 @@
+import { getUserData } from "./userData.js";
+import { fetchAllGames } from "./listGames.js";
+
 // Get steam id and app id from url
 const urlParams = new URLSearchParams(window.location.search);
 const steamId = urlParams.get("steamid");
 const appId = urlParams.get("appid");
-console.log(steamId, appId);
+const gamesUrl = `http://localhost:8080/http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=9E43E82E45266C37789162D8E0B27D25&format=json&include_appinfo=1`;
 
 // Fetch game details from Steam API
 async function fetchGameDetails(appId, steamId) {
@@ -10,7 +13,6 @@ async function fetchGameDetails(appId, steamId) {
 	try {
 		const response = await fetch(gameDetailsUrl);
 		const data = await response.json();
-		console.log("Game details:", data);
 		return data;
 	} catch (error) {
 		console.error("Error fetching game details:", error);
@@ -18,7 +20,7 @@ async function fetchGameDetails(appId, steamId) {
 	}
 }
 
-// Fetch achievements
+// Fetch achievements schema
 async function fetchAchievements(appId) {
 	const achievementsUrl = `http://localhost:8080/http://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v2?appid=${appId}&key=9E43E82E45266C37789162D8E0B27D25&format=json`;
 	try {
@@ -29,7 +31,6 @@ async function fetchAchievements(appId) {
 			data.game.availableGameStats &&
 			data.game.availableGameStats.achievements
 		) {
-			console.log("Achievements:", data);
 			return data.game.availableGameStats.achievements;
 		}
 		return [];
@@ -54,70 +55,133 @@ function orderByUnlocked(achievements, playerAchievements) {
 	return [...unlocked, ...locked];
 }
 
-// function to  se if achievement is unlocked
+// Check if achievement is unlocked
 function isAchievementUnlocked(ach, details) {
-	if (
-		details.playerstats.achievements.find(
-			(a) => a.name === ach.name && a.achieved > 0
-		)
-	) {
-		return true;
-	} else {
-		return false;
-	}
+	return !!details.playerstats.achievements.find(
+		(a) => a.name === ach.name && a.achieved > 0
+	);
 }
 
-// Display game details in the DOM
-function displayGameDetails(details, achievements) {
+// Display game details in the DOM using templates
+function displayGameDetails(details, achievements, gameStats) {
+	console.log("Game Details:", details);
+	console.log("Achievements:", achievements);
+	console.log("Game Stats:", gameStats);
 	const gameContainer = document.getElementById("game-container");
-	achievements = orderByUnlocked(
-		achievements,
-		details.playerstats.achievements
-	);
+	const gameTemplate = document.getElementById("game-details-template");
+	const achTemplate = document.getElementById("achievement-template");
+
 	if (!details || !details.playerstats) {
 		gameContainer.innerHTML = "<p>Game details not available.</p>";
 		return;
 	}
-	const gameName = details.playerstats.gameName || "Unknown Game";
-	const headerImg = details.header_image || ""; // You may need to fetch this from another endpoint
-	const description = details.short_description || ""; // You may need to fetch this from another endpoint
 
-	gameContainer.innerHTML = `
-        <h1 class="title">${gameName}</h1>
-        ${
-					headerImg
-						? `<img  src="${headerImg}" alt="${gameName} header" />`
-						: ""
-				}
-        <p>${description}</p>
-        <h2 class="subtitle">Achievements</h2>
-		<div class="achievements">
-        <ul>
-            ${achievements
-							.map(
-								(ach) =>
-									`<li><img src="${
-										isAchievementUnlocked(ach, details)
-											? ach.icon
-											: ach.icongray
-									}" alt="${
-										ach.displayName
-									} icon" /> <div class="achievement-details"><p><strong>${
-										ach.displayName
-									}</strong> ${
-										ach.description === undefined ? "" : ach.description
-									}<p></div></li>`
-							)
-							.join("")}</ul></div>`;
+	const gameName = details.playerstats.gameName || "Unknown Game";
+	const headerImg = `https://cdn.akamai.steamstatic.com/steam/apps/${gameStats.id}/logo.png`;
+
+	const description = details.short_description || "";
+
+	const clone = gameTemplate.content.cloneNode(true);
+
+	const imgElem = clone.querySelector(".game-header-img");
+	if (headerImg) {
+		imgElem.src = headerImg;
+		imgElem.alt = `${gameName} header`;
+		imgElem.style.display = "";
+	}
+	clone.querySelector(".game-description").textContent = description;
+
+	// --- Stats block ---
+	const statsDiv = clone.querySelector("#game-stats");
+	if (statsDiv && gameStats) {
+		const playtime = gameStats ? Math.round((gameStats.playtime || 0) / 60) : 0;
+		const lastPlayed =
+			gameStats && gameStats.rtime_last_played
+				? new Date(gameStats.rtime_last_played * 1000).toLocaleString()
+				: "Never";
+		const timePlayed2Weeks = gameStats
+			? Math.round((gameStats.playtime_2weeks || 0) / 60)
+			: 0;
+
+		statsDiv.innerHTML = `
+            <p><strong>Time played in this game:</strong> ${playtime} hours</p>
+            <p><strong>Last played:</strong> ${lastPlayed}</p>
+            <p><strong>Time played in the last 2 weeks:</strong> ${timePlayed2Weeks} hours</p>
+        `;
+	}
+
+	const achievementsList = clone.querySelector(".achievements-list");
+	const orderedAchievements = orderByUnlocked(
+		achievements,
+		details.playerstats.achievements
+	);
+
+	orderedAchievements.forEach((ach) => {
+		const achClone = achTemplate.content.cloneNode(true);
+		const iconElem = achClone.querySelector(".achievement-icon");
+		iconElem.src = isAchievementUnlocked(ach, details)
+			? ach.icon
+			: ach.icongray;
+		iconElem.alt = `${ach.displayName} icon`;
+
+		achClone.querySelector(".achievement-title").textContent = ach.displayName;
+		achClone.querySelector(".achievement-desc").textContent =
+			ach.description || "";
+
+		achievementsList.appendChild(achClone);
+	});
+
+	gameContainer.innerHTML = "";
+	gameContainer.appendChild(clone);
 }
 
 // Main async function to coordinate everything
 async function main() {
+	// Fetch user info
+	const user = await getUserData(steamId);
+	if (user) {
+		const userDiv = document.getElementById("userInfo");
+		userDiv.innerHTML = `
+            <div class="info">
+                <img src="${user.avatarfull}" alt="Avatar" />
+                <h2>${user.personaname}</h2>
+                <p>Steam Id: ${user.steamid}</p>
+                <p>Last Online: ${new Date(
+									user.lastlogoff * 1000
+								).toLocaleString()}</p>
+            </div>
+        `;
+	}
+
+	// Fetch all games (basic info only, one fetch for all stats)
+	const games = await fetchAllGames(steamId, gamesUrl);
+	const gameStats = games.find((g) => g.id == appId);
+
+	// Fetch game details and achievements
 	const details = await fetchGameDetails(appId, steamId);
 	const achievements = await fetchAchievements(appId);
-	const gameInfo = { details, achievements };
-	displayGameDetails(gameInfo.details, gameInfo.achievements);
+
+	displayGameDetails(details, achievements, gameStats);
 }
 
-// Run main
 main();
+
+document.getElementById("back-to-gallery").addEventListener("click", () => {
+	// Go back to gallery.html, preserving steamid in URL
+	const steamId = new URLSearchParams(window.location.search).get("steamid");
+	window.location.href = `gallery.html?steamid=${steamId}`;
+});
+
+// Show "scroll to top" button when scrolled down
+window.addEventListener("scroll", () => {
+	const scrollBtn = document.getElementById("scroll-to-top");
+	if (window.scrollY > 200) {
+		scrollBtn.style.display = "block";
+	} else {
+		scrollBtn.style.display = "none";
+	}
+});
+
+document.getElementById("scroll-to-top").addEventListener("click", () => {
+	window.scrollTo({ top: 0, behavior: "smooth" });
+});
