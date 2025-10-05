@@ -1,4 +1,6 @@
-/* Header */
+/* =========================
+   Header & Logo
+   ========================= */
 header {
 	display: flex;
 	align-items: left;
@@ -11,12 +13,14 @@ header {
 	flex-direction: row;
 	align-items: center;
 }
-
 .logo {
 	width: 4rem;
 	height: auto;
 }
 
+/* =========================
+   User Info
+   ========================= */
 #userInfo {
 	text-align: right;
 	margin-bottom: 2rem;
@@ -39,14 +43,17 @@ header {
 	vertical-align: middle;
 }
 
-/* Gallery grid styles */
+/* =========================
+   Gallery Grid & Game Cards
+   ========================= */
 .games-grid {
 	margin: 1rem;
 	display: grid;
 	gap: 1rem;
 	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 }
-.game-card-link {
+.game-card-link,
+a {
 	text-decoration: none;
 	color: inherit;
 }
@@ -70,13 +77,11 @@ header {
 	border: 2px solid rgb(255, 136, 0);
 	box-shadow: 0 0 10px gold;
 }
-
 .game-card img {
 	width: 100%;
 	border-radius: 5px;
 	box-shadow: 0 0px 5px rgba(255, 255, 255, 0.3);
 }
-
 .game-card:hover {
 	transform: translateY(-5px);
 	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
@@ -94,7 +99,9 @@ header {
 	-webkit-text-stroke: 1px;
 }
 
-/* Pagination styles */
+/* =========================
+   Pagination Controls
+   ========================= */
 #pagination-controls {
 	display: flex;
 	justify-content: center;
@@ -110,11 +117,35 @@ header {
 	cursor: pointer;
 	font-size: 1rem;
 }
-
 #pagination-controls button:hover {
 	background: #555;
 }
+.mx-2 {
+	margin-left: 0.5rem;
+	margin-right: 0.5rem;
+	background: #333;
+	color: #fff;
+	padding: 10px 15px;
+	border-radius: 5px;
+}
 
+/* =========================
+   Select Dropdowns
+   ========================= */
+#pageSize,
+#sortType {
+	margin-left: 10px;
+	border-radius: 5px;
+	font-size: 1rem;
+	background: #222;
+	color: #fff;
+	background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+	background-repeat: no-repeat;
+	background-position: right 0.75em center;
+	background-size: 1em;
+	padding-right: 2.5em;
+	border: 1px solid #444;
+}
 #pageSizeSelect {
 	margin-left: 10px;
 	padding: 5px;
@@ -125,15 +156,27 @@ header {
 	color: #fff;
 }
 
-.mx-2 {
-	margin-left: 0.5rem;
-	margin-right: 0.5rem;
-	background: #333;
-	color: #fff;
-	padding: 10px 15px;
-	border-radius: 5px;
-}
+/* =========================
+   Utility Classes
+   ========================= */
 span {
 	font-weight: bold;
 	align-content: center;
+}
+.mb-3 {
+	margin-bottom: 1rem;
+	margin-top: 1rem;
+	text-align: center;
+	font-size: 1.2rem;
+	font-weight: bold;
+	color: #fff;
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+	justify-content: center;
+}
+.controls {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 1rem;
+	gap: 1rem;
+	flex-wrap: wrap;
 }

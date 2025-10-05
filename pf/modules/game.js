@@ -1,13 +1,20 @@
+// =========================
+// Imports
+// =========================
 import { getUserData } from "./userData.js";
 import { fetchAllGames } from "./listGames.js";
 
-// Get steam id and app id from url
+// =========================
+// Constants & API Endpoints
+// =========================
 const urlParams = new URLSearchParams(window.location.search);
 const steamId = urlParams.get("steamid");
 const appId = urlParams.get("appid");
 const gamesUrl = `http://localhost:8080/http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=9E43E82E45266C37789162D8E0B27D25&format=json&include_appinfo=1`;
 
-// Fetch game details from Steam API
+// =========================
+// API Fetch Functions
+// =========================
 async function fetchGameDetails(appId, steamId) {
 	const gameDetailsUrl = `http://localhost:8080/http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=${appId}&key=9E43E82E45266C37789162D8E0B27D25&steamid=${steamId}`;
 	try {
@@ -20,7 +27,6 @@ async function fetchGameDetails(appId, steamId) {
 	}
 }
 
-// Fetch achievements schema
 async function fetchAchievements(appId) {
 	const achievementsUrl = `http://localhost:8080/http://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v2?appid=${appId}&key=9E43E82E45266C37789162D8E0B27D25&format=json`;
 	try {
@@ -40,7 +46,9 @@ async function fetchAchievements(appId) {
 	}
 }
 
-// Order achievements: unlocked first, then locked
+// =========================
+// Achievement Helpers
+// =========================
 function orderByUnlocked(achievements, playerAchievements) {
 	const unlocked = [];
 	const locked = [];
@@ -55,14 +63,15 @@ function orderByUnlocked(achievements, playerAchievements) {
 	return [...unlocked, ...locked];
 }
 
-// Check if achievement is unlocked
 function isAchievementUnlocked(ach, details) {
 	return !!details.playerstats.achievements.find(
 		(a) => a.name === ach.name && a.achieved > 0
 	);
 }
 
-// Display game details in the DOM using templates
+// =========================
+// DOM Rendering Functions
+// =========================
 function displayGameDetails(details, achievements, gameStats) {
 	console.log("Game Details:", details);
 	console.log("Achievements:", achievements);
@@ -78,7 +87,6 @@ function displayGameDetails(details, achievements, gameStats) {
 
 	const gameName = details.playerstats.gameName || "Unknown Game";
 	const headerImg = `https://cdn.akamai.steamstatic.com/steam/apps/${gameStats.id}/logo.png`;
-
 	const description = details.short_description || "";
 
 	const clone = gameTemplate.content.cloneNode(true);
@@ -135,7 +143,9 @@ function displayGameDetails(details, achievements, gameStats) {
 	gameContainer.appendChild(clone);
 }
 
-// Main async function to coordinate everything
+// =========================
+// Main Async Function
+// =========================
 async function main() {
 	// Fetch user info
 	const user = await getUserData(steamId);
@@ -166,13 +176,15 @@ async function main() {
 
 main();
 
+// =========================
+// Navigation & Scroll Buttons
+// =========================
 document.getElementById("back-to-gallery").addEventListener("click", () => {
 	// Go back to gallery.html, preserving steamid in URL
 	const steamId = new URLSearchParams(window.location.search).get("steamid");
 	window.location.href = `gallery.html?steamid=${steamId}`;
 });
 
-// Show "scroll to top" button when scrolled down
 window.addEventListener("scroll", () => {
 	const scrollBtn = document.getElementById("scroll-to-top");
 	if (window.scrollY > 200) {

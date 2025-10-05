@@ -1,3 +1,6 @@
+// =========================
+// Game Class
+// =========================
 export class Game {
 	constructor(id, title, img, playtime, ach_onwed = 0, ach_total = 0) {
 		this.id = id;
@@ -9,7 +12,9 @@ export class Game {
 	}
 }
 
-// Fetch all games (basic info only)
+// =========================
+// Fetch All Games (Basic Info)
+// =========================
 export async function fetchAllGames(steamId, gamesUrl) {
 	try {
 		const response = await fetch(`${gamesUrl}&steamid=${steamId}`);
@@ -30,7 +35,9 @@ export async function fetchAllGames(steamId, gamesUrl) {
 	}
 }
 
-// Fetch achievements for only the games on the current page
+// =========================
+// Add Achievements to Games (Current Page)
+// =========================
 export async function addAchievementsToGames(games, steamId) {
 	return await Promise.all(
 		games.map(async (game) => {
@@ -42,7 +49,9 @@ export async function addAchievementsToGames(games, steamId) {
 	);
 }
 
-// Fetch achievements for a single game
+// =========================
+// Fetch Achievements for a Single Game
+// =========================
 export async function getPlayerAchievements(steamId, appId) {
 	try {
 		const url = `http://localhost:8080/http://api.steampowered.com/ISteamUserStats/GetPlayerAchievements/v0001/?key=9E43E82E45266C37789162D8E0B27D25&steamid=${steamId}&appid=${appId}`;

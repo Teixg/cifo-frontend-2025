@@ -1,3 +1,6 @@
+/* =========================
+   Header & Logo
+   ========================= */
 header {
 	display: flex;
 	align-items: left;
@@ -16,6 +19,9 @@ header {
 	height: auto;
 }
 
+/* =========================
+   User Info
+   ========================= */
 #userInfo {
 	text-align: right;
 	margin-bottom: 2rem;
@@ -38,6 +44,9 @@ header {
 	vertical-align: middle;
 }
 
+/* =========================
+   Subtitle & Section Titles
+   ========================= */
 .subtitle {
 	margin-top: 20px;
 	margin-bottom: 10px;
@@ -46,35 +55,33 @@ header {
 	text-align: center;
 }
 
+/* =========================
+   Achievements List & Items
+   ========================= */
+.achievements ul {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+	gap: 0.5rem;
+}
 li {
 	margin: 5px 0;
 	list-style: none;
 	display: flex;
 	align-items: flex-start;
 }
-
 li img {
 	width: 3.5rem;
 	height: 3.5rem;
 	margin-right: 10px;
 }
-
 li strong {
 	font-size: 0.8rem;
 }
-
-.achievements ul {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-	gap: 0.5rem;
-}
-
 .achievement-details {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 }
-
 .achievement-details p {
 	margin: 0;
 	font-size: 0.8rem;
@@ -85,6 +92,9 @@ li strong {
 	color: #fff;
 }
 
+/* =========================
+   Game Stats Block
+   ========================= */
 #game-stats {
 	margin: 1rem;
 	padding: 1rem;
@@ -111,6 +121,9 @@ li strong {
 	margin-bottom: 0;
 }
 
+/* =========================
+   Game Header Image
+   ========================= */
 .game-header-img {
 	width: 40rem;
 	height: auto;
@@ -120,6 +133,9 @@ li strong {
 	margin-right: auto;
 }
 
+/* =========================
+   Navigation Buttons
+   ========================= */
 #scroll-to-top.nav-btn {
 	position: fixed;
 	right: 24px;
@@ -139,9 +155,7 @@ li strong {
 #scroll-to-top.nav-btn:hover {
 	opacity: 1;
 }
-
 #back-to-gallery.nav-btn {
-	margin-bottom: 1rem;
 	padding: 0.5rem 1rem;
 	border-radius: 10px;
 	background: #222;
@@ -152,8 +166,12 @@ li strong {
 	border: none;
 	cursor: pointer;
 	transition: opacity 0.2s;
+	margin-left: 2rem;
 }
 
+/* =========================
+   Responsive Styles
+   ========================= */
 @media (max-width: 600px) {
 	.game-header-img {
 		width: 20rem;
@@ -186,10 +204,21 @@ li strong {
 	#game-stats strong {
 		font-size: 1rem;
 	}
+	#game-stats {
+		width: 20rem;
+	}
 }
 
+/* =========================
+   Miscellaneous
+   ========================= */
 .bi-trophy-fill {
 	color: orange;
 	margin-right: 1rem;
 	margin-left: 1rem;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
 }

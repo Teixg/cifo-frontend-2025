@@ -1,21 +1,23 @@
-/*Section callToAction*/
+/* =========================
+   Call To Action Section
+   ========================= */
 .callToAction {
 	text-align: center;
 	margin: 2rem;
 }
 
-/*Section inputId*/
+/* =========================
+   Steam ID Input Section
+   ========================= */
 .inputId {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
-
 #steamId {
 	max-width: 40rem;
 	width: 100%;
 }
-
 .inputContainer {
 	position: relative;
 	width: 300px;
@@ -30,6 +32,9 @@
 	outline: none;
 }
 
+/* =========================
+   Fetch Button
+   ========================= */
 .fetchBtn {
 	position: absolute;
 	right: 3px;
@@ -47,7 +52,6 @@
 	border-color: var(--color-200);
 	z-index: 2;
 }
-
 .fetchBtn:hover {
 	background: var(--color-100);
 	border-color: var(--color-50);
@@ -61,7 +65,9 @@
 	fill: #fff;
 }
 
-/*Section accordionSection*/
+/* =========================
+   Accordion Section
+   ========================= */
 .accordionSection {
 	margin: 2rem;
 }
@@ -90,7 +96,6 @@
 .accordion-button::after {
 	filter: invert(1);
 }
-
 .accordion-button:not(.collapsed) {
 	color: var(--color-50);
 	background-color: transparent;

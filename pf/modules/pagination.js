@@ -1,7 +1,13 @@
+// =========================
+// Pagination State Variables
+// =========================
 export let currentPage = 1;
 export let totalPages = 1;
 export let pageSize = 10;
 
+// =========================
+// Pagination Setters
+// =========================
 export function setCurrentPage(page) {
 	currentPage = page;
 }
@@ -12,7 +18,9 @@ export function setTotalPages(pages) {
 	totalPages = pages;
 }
 
-// Render pagination controls (prev/next/page selector)
+// =========================
+// Render Pagination Controls
+// =========================
 export function renderPaginationControls({
 	displayGames,
 	steamId,

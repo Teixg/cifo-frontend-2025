@@ -1,3 +1,6 @@
+/* =========================
+   Color Variables
+   ========================= */
 :root {
 	--colorw-50: #f0f3ff;
 	--colorw-100: #e1e7fe;
@@ -22,6 +25,10 @@
 	--color-900: #151b2b;
 	--color-950: #0e1119;
 }
+
+/* =========================
+   Body & Background
+   ========================= */
 body {
 	margin: 0;
 	border: 0;
@@ -38,7 +45,9 @@ body {
 	height: 100%;
 }
 
-/*Header styles*/
+/* =========================
+   Header & Logo
+   ========================= */
 header {
 	display: flex;
 	align-items: center;
@@ -51,6 +60,9 @@ header {
 	height: auto;
 }
 
+/* =========================
+   Footer
+   ========================= */
 footer {
 	position: relative;
 	display: flex;
@@ -62,17 +74,17 @@ footer {
 	color: #ccc;
 }
 
-/* icons style */
+/* =========================
+   Icon Styles
+   ========================= */
 .bi-trophy-fill {
 	color: orange;
 	margin-right: 1rem;
 }
-
 .bi-clock-fill {
 	color: rgba(220, 105, 255);
 	margin-right: 1rem;
 }
-
 .bi-graph-up {
 	color: rgba(46, 161, 255);
 	margin-right: 1rem;

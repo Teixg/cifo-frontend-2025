@@ -4,6 +4,9 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Playlitics</title>
+		<!-- =========================
+             Favicon & Stylesheets
+             ========================= -->
 		<link
 			rel="icon"
 			href="./assets/favicon.ico"
@@ -13,21 +16,30 @@
 		<link
 			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
 			rel="stylesheet"
-			integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
-			crossorigin="anonymous"
 		/>
-		<link rel="stylesheet" href=".//styles/styles.css" />
-		<link rel="stylesheet" href=".//styles/index.css" />
+		<link rel="stylesheet" href="./styles/styles.css" />
+		<link rel="stylesheet" href="./styles/index.css" />
 		<script src="./main.js" type="module" defer></script>
 	</head>
 	<body>
+		<!-- =========================
+             Header & Logo
+             ========================= -->
 		<header>
 			<img class="logo" src="./assets/logo.png" alt="Playlitics Logo" />
 			<h1>Playlitics</h1>
 		</header>
+
+		<!-- =========================
+             Call To Action
+             ========================= -->
 		<section class="callToAction">
 			<h2>Ingresa tu Steam ID para empezar a ver tus estadísticas</h2>
 		</section>
+
+		<!-- =========================
+             Steam ID Input
+             ========================= -->
 		<section class="inputId">
 			<div class="inputContainer">
 				<form class="form-floating">
@@ -59,8 +71,12 @@
 		</section>
 		<p id="response"></p>
 
+		<!-- =========================
+             Accordion Section
+             ========================= -->
 		<section class="accordionSection">
 			<div class="accordion">
+				<!-- Accordion Item 1 -->
 				<div class="accordion-item">
 					<h2 class="accordion-header">
 						<button
@@ -130,26 +146,10 @@
 								Consulta tus horas jugadas, últimas sesiones y evolución por
 								géneros. Descubre tus hábitos y juegos más recurrentes.
 							</p>
-							<p>
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									width="20"
-									height="20"
-									fill="rgba(46, 161, 255)"
-									class="bi bi-graph-up"
-									viewBox="0 0 16 16"
-								>
-									<path
-										fill-rule="evenodd"
-										d="M0 0h1v15h15v1H0zm14.817 3.113a.5.5 0 0 1 .07.704l-4.5 5.5a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61 4.15-5.073a.5.5 0 0 1 .704-.07"
-									/>
-								</svg>
-								<strong>Estadísticas que hablan</strong><br />
-								Tu experiencia gamer, en datos claros y visuales.
-							</p>
 						</div>
 					</div>
 				</div>
+				<!-- Accordion Item 2 -->
 				<div class="accordion-item">
 					<h2 class="accordion-header">
 						<button
@@ -188,6 +188,7 @@
 							<strong>público</strong> para que podamos acceder a tus datos.
 						</div>
 					</div>
+					<!-- Accordion Item 3 -->
 					<div class="accordion-item">
 						<h2 class="accordion-header">
 							<button
@@ -230,18 +231,22 @@
 				</div>
 			</div>
 		</section>
+
+		<!-- =========================
+             Footer
+             ========================= -->
 		<footer>
 			<p>
 				Playlitics is a platform that provides insights and analytics for
 				gamers.
 			</p>
 			<p>Developed by Teix</p>
-			<p>&copy; 2025 PLaylitics. All rights reserved.</p>
+			<p>&copy; 2025 Playlitics. All rights reserved.</p>
 		</footer>
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
-			integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
-			crossorigin="anonymous"
-		></script>
+
+		<!-- =========================
+             Bootstrap JS
+             ========================= -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 	</body>
 </html>

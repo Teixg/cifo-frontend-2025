@@ -4,6 +4,9 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Playlitics</title>
+		<!-- =========================
+             Favicon & Stylesheets
+             ========================= -->
 		<link
 			rel="icon"
 			href="./assets/favicon.ico"
@@ -13,43 +16,64 @@
 		<link
 			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
 			rel="stylesheet"
-			integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
 			crossorigin="anonymous"
 		/>
-		<link rel="stylesheet" href=".//styles/styles.css" />
-		<link rel="stylesheet" href=".//styles/game.css" />
+		<link rel="stylesheet" href="./styles/styles.css" />
+		<link rel="stylesheet" href="./styles/game.css" />
 		<script src="./modules/game.js" type="module" defer></script>
 	</head>
 	<body>
+		<!-- =========================
+             Header & User Info
+             ========================= -->
 		<header>
-			<div class="logo-container">
-				<img class="logo" src="./assets/logo.png" alt="Playlitics Logo" />
-				<h1>Playlitics</h1>
-			</div>
+			<a href="./index.html">
+				<div class="logo-container">
+					<img class="logo" src="./assets/logo.png" alt="Playlitics Logo" />
+					<h1>Playlitics</h1>
+				</div>
+			</a>
 			<div id="userInfo"></div>
 		</header>
-		<button id="back-to-gallery" class="nav-btn">← Back</button>
 
-		<div id="game-container"></div>
+		<!-- =========================
+             Navigation Buttons
+             ========================= -->
+		<button id="back-to-gallery" class="nav-btn">← Back</button>
 		<button id="scroll-to-top" class="nav-btn" style="display: none">
 			↑ Top
 		</button>
+
+		<!-- =========================
+             Main Game Content
+             ========================= -->
+		<div id="game-container"></div>
+
+		<!-- =========================
+             Footer
+             ========================= -->
 		<footer>
 			<p>
 				Playlitics is a platform that provides insights and analytics for
 				gamers.
 			</p>
 			<p>Developed by Teix</p>
-			<p>&copy; 2025 PLaylitics. All rights reserved.</p>
+			<p>&copy; 2025 Playlitics. All rights reserved.</p>
 		</footer>
+
+		<!-- =========================
+             Bootstrap JS
+             ========================= -->
 		<script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
-			integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
 			crossorigin="anonymous"
 		></script>
 	</body>
 </html>
 
+<!-- =========================
+     Game Details Template
+     ========================= -->
 <template id="game-details-template">
 	<div>
 		<img class="game-header-img" src="" alt="" />
@@ -88,6 +112,9 @@
 	</div>
 </template>
 
+<!-- =========================
+     Achievement Item Template
+     ========================= -->
 <template id="achievement-template">
 	<li>
 		<img class="achievement-icon" src="" alt="" />

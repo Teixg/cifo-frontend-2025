@@ -1,3 +1,6 @@
+// =========================
+// Sort Games Utility
+// =========================
 export function sortGames(games, sortType = "alpha") {
 	const sorted = [...games];
 	if (sortType === "alpha") {

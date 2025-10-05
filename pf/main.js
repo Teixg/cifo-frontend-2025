@@ -1,8 +1,13 @@
+// =========================
+// Constants & API Endpoints
+// =========================
 const bt1 = document.getElementById("fecth1");
 const idUrl = `http://localhost:8080/http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=9E43E82E45266C37789162D8E0B27D25&steamids=`;
 const vanityUrl = `http://localhost:8080/http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key=9E43E82E45266C37789162D8E0B27D25&vanityurl=`;
 
-// Event listener for the button click
+// =========================
+// Event Listeners
+// =========================
 bt1.addEventListener("click", async () => {
 	let steamId = document.getElementById("steamId").value;
 	const userData = await getUserData(steamId);
@@ -14,7 +19,9 @@ bt1.addEventListener("click", async () => {
 	}
 });
 
-// Function to fetch user data from Steam API
+// =========================
+// API Functions
+// =========================
 async function getUserData(steamIdOrVanity) {
 	try {
 		// First, resolve vanity URL to SteamID64
