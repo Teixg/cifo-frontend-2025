@@ -12,6 +12,7 @@ const vanityUrl = `http://localhost:8080/http://api.steampowered.com/ISteamUser/
 // =========================
 bt1.addEventListener("click", async () => {
 	let steamId = document.getElementById("steamId").value;
+	localStorage.setItem("lastSteamId", steamId); // Save to localStorage
 	const userData = await getUserData(steamId);
 	console.log("Fetched User Data:", userData);
 	if (userData) {
@@ -51,4 +52,9 @@ async function getUserData(steamIdOrVanity) {
 		document.getElementById("response").innerText =
 			"Error fetching data. Please check the console for details.";
 	}
+}
+
+const lastSteamId = localStorage.getItem("lastSteamId");
+if (lastSteamId) {
+	document.getElementById("steamId").value = lastSteamId;
 }

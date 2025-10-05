@@ -103,34 +103,31 @@
 	user-select: none;
 }
 
-/* =========================
-   Error Block
-   ========================= */
+@media screen and (max-width: 600px) {
+	.accordion-header {
+		font-size: 1.2rem;
+	}
+	.accordion-button {
+		font-size: 1rem;
+	}
+	.accordion-body {
+		font-size: 0.9rem;
+	}
+	.accordionSection {
+		width: 100%;
+		margin: 0 auto;
+	}
+}
 
-.error-block {
-	background: #2c2c2c;
-	color: #ff6b6b;
-	border-radius: 10px;
-	padding: 1.5rem;
-	text-align: center;
-	margin: 2rem auto;
-	max-width: 400px;
-	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
-	opacity: 1;
-	transition: opacity 0.6s;
-}
-.error-block.hide {
-	opacity: 0;
-}
-.error-block svg {
-	margin-bottom: 1rem;
-}
-.error-block p {
-	font-size: 1.1rem;
-	font-weight: bold;
-}
-.error-block .error-detail {
-	color: #fff;
-	font-size: 1rem;
-	font-weight: normal;
+@media screen {
+	.accordion-button {
+		font-size: 1.2rem;
+	}
+	.accordion-body {
+		font-size: 1rem;
+	}
+	.accordionSection {
+		max-width: 70%;
+		margin: 0 auto;
+	}
 }

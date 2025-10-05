@@ -47,18 +47,23 @@ if (window.innerWidth <= 600) {
 document.addEventListener("DOMContentLoaded", () => {
 	const pageSizeSelect = document.getElementById("pageSize");
 	if (pageSizeSelect) {
-		const initial = window.innerWidth <= 600 ? 10 : 20;
-		pageSizeSelect.value = initial;
+		const savedPageSize = localStorage.getItem("pageSize");
+		if (savedPageSize) pageSizeSelect.value = savedPageSize;
+
 		pageSizeSelect.addEventListener("change", function () {
+			localStorage.setItem("pageSize", this.value); // Save to localStorage
 			setCurrentPage(1);
 			displayGames({ steamId });
 		});
 	}
 
 	const sortSelect = document.getElementById("sortType");
-	if (sortSelect) sortSelect.value = "alpha";
 	if (sortSelect) {
+		const savedSortType = localStorage.getItem("sortType");
+		if (savedSortType) sortSelect.value = savedSortType;
+
 		sortSelect.addEventListener("change", function () {
+			localStorage.setItem("sortType", this.value); // Save to localStorage
 			sortType = this.value;
 			setCurrentPage(1);
 			displayGames({ steamId });
