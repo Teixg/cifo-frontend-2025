@@ -1,3 +1,5 @@
+import { showError } from "./modules/errorHandler.js";
+
 // =========================
 // Constants & API Endpoints
 // =========================
@@ -15,7 +17,10 @@ bt1.addEventListener("click", async () => {
 	if (userData) {
 		window.location.href = `gallery.html?steamid=${userData.steamid}`;
 	} else {
-		document.getElementById("response").innerText = "No player data found.";
+		showError("response", {
+			message: "No player data found.",
+			detail: "Please check your Steam ID and try again.",
+		});
 	}
 });
 

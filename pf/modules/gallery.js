@@ -11,7 +11,7 @@ import {
 	renderPaginationControls,
 } from "./pagination.js";
 import { sortGames } from "./sortGames.js";
-
+import { showError } from "./errorHandler.js";
 // =========================
 // Variables & SVG Icons
 // =========================
@@ -72,8 +72,11 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", async () => {
 	getSteamIdFromUrl();
 	if (!steamId) {
-		document.getElementById("gallery").innerText =
-			"No SteamID provided in URL.";
+		showError("gallery", {
+			message: "No SteamID provided in URL.",
+			detail: "Please provide a SteamID to view your gallery.",
+			timeout: 0,
+		});
 		return;
 	}
 
@@ -157,7 +160,11 @@ async function displayGames({ steamId }) {
 		});
 		gallery.appendChild(gamesGrid);
 	} else {
-		gallery.innerHTML = "<p>No games found.</p>";
+		showError("gallery", {
+			message: "No games found.",
+			detail: "Please check your Steam ID or try again later.",
+			timeout: 0,
+		});
 	}
 
 	if (loader) loader.style.display = "none";

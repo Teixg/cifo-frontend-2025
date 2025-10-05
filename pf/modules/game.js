@@ -3,7 +3,7 @@
 // =========================
 import { getUserData } from "./userData.js";
 import { fetchAllGames } from "./listGames.js";
-
+import { showError } from "./errorHandler.js";
 // =========================
 // Constants & API Endpoints
 // =========================
@@ -19,10 +19,25 @@ async function fetchGameDetails(appId, steamId) {
 	const gameDetailsUrl = `http://localhost:8080/http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=${appId}&key=9E43E82E45266C37789162D8E0B27D25&steamid=${steamId}`;
 	try {
 		const response = await fetch(gameDetailsUrl);
+		if (!response.ok) {
+			// Show a styled error if the API returns an error
+			showError("game-container", {
+				message: "Game stats not available.",
+				detail:
+					"This game may not support achievements or your profile may be private.",
+				timeout: 0,
+			});
+			return null;
+		}
 		const data = await response.json();
 		return data;
 	} catch (error) {
 		console.error("Error fetching game details:", error);
+		showError("game-container", {
+			message: "Error fetching game details.",
+			detail: "Please check your connection or try again later.",
+			timeout: 0,
+		});
 		return null;
 	}
 }
@@ -64,7 +79,8 @@ function orderByUnlocked(achievements, playerAchievements) {
 }
 
 function isAchievementUnlocked(ach, details) {
-	return !!details.playerstats.achievements.find(
+	const playerAchievements = details.playerstats.achievements ?? [];
+	return !!playerAchievements.find(
 		(a) => a.name === ach.name && a.achieved > 0
 	);
 }
@@ -81,7 +97,10 @@ function displayGameDetails(details, achievements, gameStats) {
 	const achTemplate = document.getElementById("achievement-template");
 
 	if (!details || !details.playerstats) {
-		gameContainer.innerHTML = "<p>Game details not available.</p>";
+		showError(gameContainer, {
+			message: "Game details not available",
+			detail: "Please check your Steam ID or try again later",
+		});
 		return;
 	}
 
@@ -121,7 +140,7 @@ function displayGameDetails(details, achievements, gameStats) {
 	const achievementsList = clone.querySelector(".achievements-list");
 	const orderedAchievements = orderByUnlocked(
 		achievements,
-		details.playerstats.achievements
+		details.playerstats.achievements ?? []
 	);
 
 	orderedAchievements.forEach((ach) => {
